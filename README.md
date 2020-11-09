@@ -1,38 +1,5 @@
-# ase-1-project	(Alumni Portal)
+# SOAD-project	(GuideMe)
 
-### Features:
-- Authentication with email verification, change password, forgot password, update profile, delete user.
-- Updating user profile by getting data from linkedin on regular basis using cron jobs.
-- Staff can send mails to selected alumni. 
-- Alumni can contact other alumni through message box integrated in our site.
-- Anyone can contact the alumni office easily and alumni can mail them through our website.
-- Alumni can post the jobs/internships present in their company through our jobs page.
-- Events and gallery info.
-- Blog to share their expereinces with the community.
-- Donations and giving back page to help the students in different ways.
-- Additional:
-	- Secured with google recaptcha service. 
-	- Works on both mobile, desktop and all ratio devices.
-
-### Technologies
-
-| GUI (front-end)  |  Backend Server |
-|------------------|-----------------|
-|  HTML5	   |  Python3 v3.8|
-| CSS3		   |  Django2 v2.2|
-| Javascript	   |  Cron	|
-| Bootstrap4 v4.4  |  Sqlite3(database)	|
-| JQuery	   |  		|
-| AJAX		   |  		|
-
-### Libraries used
- - django-cleanup
- - django-cron
- - django-filter
- - django-private-chat
- - linkedin-api
- - pillow
- - websockets
 	
 ### Project and environment setup
 ```bash
@@ -58,9 +25,11 @@ python manage.py runserver
 # in another terminal
 cd frontend/
 
+# install the node dependencies
+npm install
 
-
-python manage.py run_chat_server
+# start the development server
+npm start
 ```
 
 
