@@ -19,7 +19,7 @@ cd GuideMe/
 # Install the requirement of the project in the virtual environment created 
 pip install -r requirements.txt
 
-# you need two terminals to run our project one for running the django server and other for running the chat server
+# you need two terminals to run our project one for running the django server and other for running reactjs server
 python manage.py runserver
 
 # in another terminal
