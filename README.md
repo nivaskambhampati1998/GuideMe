@@ -39,5 +39,5 @@ npm start
 - [P Venkatesh](https://github.com/venky012)
 - [P Sri Ranga](https://github.com/Pabbisettysriranga)
 - [P Vikranth Reddy](https://github.com/vikranthreddyp)
-- S Harshavardhan
+- [S Harshavardhan](https://github.com/harshavardan605)
 - [K N D Pavan Srinivas](https://github.com/nivaskambhampati1998)
