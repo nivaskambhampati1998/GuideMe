@@ -17,6 +17,10 @@ import Place from './components/Place';
 
 class App extends Component {
 	state = {}
+	state = {
+		user:null,
+	}
+	
 	componentDidMount = () => {
 		const config = {
 			headers: {
@@ -24,20 +28,23 @@ class App extends Component {
 			}
 		};
 
-		axios.get('http://localhost:8000/accounts/user/' + localStorage.getItem('name') + '/', config).then(
-			res => {
-				this.setUser(res.data);
-			},
-			err => {
-				console.log(err)
-			}
-		)
+		// if (localStorage.getItem('name')!=null){
+			axios.get('http://localhost:8000/accounts/user/' + localStorage.getItem('username') + '/', config).then(
+				res => {
+					this.setUser(res.data);
+				},
+				err => {
+					console.log(err)
+				}
+			)
+		// }
+		console.log("----------user------------",this.state.user);
 	};
 	setUser = user => {
+		localStorage.setItem('user',JSON.stringify(user)+',');
 		this.setState({
-			user: user
+			user: localStorage.getItem('user')
 		});
-		console.log(user);
 	};
 
 
@@ -47,7 +54,7 @@ class App extends Component {
 
 
 				<Router>
-					<Navbar user={this.state.user} setUser={this.setUser} />
+					<Navbar user={this.state.user} setUser={this.setUser} user={this.state.user}/>
 					<Switch>
 						<Route exact path='/' component={Home} />
 						<Route exact path='/login' component={() => <Login setUser={this.setUser} />} />

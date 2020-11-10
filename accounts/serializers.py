@@ -50,7 +50,7 @@ class RegisterGuideSerializer(serializers.ModelSerializer):
 
 class RegisterTouristSerializer(serializers.HyperlinkedModelSerializer):
     
-    user = UserSerializer(required = True)
+    user = UserSerializer()
 
     class Meta:
         model = Tourist
@@ -59,8 +59,8 @@ class RegisterTouristSerializer(serializers.HyperlinkedModelSerializer):
     def create(self, validated_data):
         user_data = validated_data.pop('user')
         user = UserSerializer.create(UserSerializer(), validated_data=user_data)
-        tourist, created = Tourist.objects.update_or_create(user=user)
-        return tourist
+        tourist, created = Tourist.objects.update_or_create(user=user,**validated_data)
+        return tourist,user
 
 
 class LoginSerializer(serializers.ModelSerializer):

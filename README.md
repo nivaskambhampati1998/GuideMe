@@ -38,6 +38,6 @@ npm start
 ### Contributors:
 - [P Venkatesh](https://github.com/venky012)
 - [P Sri Ranga](https://github.com/Pabbisettysriranga)
-- P Vikranth Reddy
+- [P Vikranth Reddy](https://github.com/vikranthreddyp)
 - S Harshavardhan
 - [K N D Pavan Srinivas](https://github.com/nivaskambhampati1998)

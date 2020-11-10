@@ -20,6 +20,8 @@ class User(AbstractUser):
     avatar = models.ImageField(upload_to=update_filename,blank = True)
     languages = models.CharField(max_length=250,blank = False)
     email_confirm = models.BooleanField(blank=True,default=False)
+    is_guide = models.BooleanField(default = False)
+    is_tourst = models.BooleanField(default = False)
     
     def __str__(self):
         return self.username
@@ -44,6 +46,7 @@ class Guide(models.Model):
 
     def save(self,*args,**kwargs):
         self.guidename = self.user.username
+        self.user.is_guide = True
         super(Guide, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -57,6 +60,7 @@ class Tourist(models.Model):
 
     def save(self,*args,**kwargs):
         self.touristname = self.user.username
+        self.user.is_tourst = True
         super(Tourist, self).save(*args, **kwargs)
 
     def __str__(self):

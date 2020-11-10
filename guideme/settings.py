@@ -150,7 +150,7 @@ LOGIN_REDIRECT_URL = '/login/'
 
 STATIC_URL = '/static/'
 
-MEDIA_DIR = os.path.join(BASE_DIR,'media')
+MEDIA_DIR = os.path.join(BASE_DIR,'frontend/public/media')
 
 MEDIA_ROOT = MEDIA_DIR
 

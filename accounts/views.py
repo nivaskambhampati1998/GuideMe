@@ -23,13 +23,13 @@ FRONTEND_URL = settings.CORS_ORIGIN_WHITELIST[0]
 
 class RegisterGuideView(APIView):
 
-    # parser_classes = (MultiPartParser, FormParser)
-
     def post(self,request):
         serializer = RegisterGuideSerializer(data = request.data)
         if serializer.is_valid(raise_exception=True):
             guide,user = serializer.create(validated_data=request.data)
-            print(user)
+            user.is_guide = True
+            user.save()
+            
             uidb64 = urlsafe_base64_encode(smart_bytes(user.id))
             token = Token.objects.get(user=user)
             current_site = get_current_site(
@@ -37,10 +37,9 @@ class RegisterGuideView(APIView):
             relativeLink = reverse(
                 'confirm-email', kwargs={'uidb64': uidb64,'token':token}
                 )
-            print(relativeLink)
             absurl = 'http://localhost:8000' + relativeLink
             
-            send_mail('GuideMe: Confirm you email','Use this link to activate your account:\n\n'+absurl,'projectguy.temp@gmail.com',[user.email,])
+            send_mail('GuideMe: Confirm you email','Hi'+user.username+',\nUse this link to activate your account:\n\n'+absurl,'projectguy.temp@gmail.com',[user.email,])
     
             serializer.data['token'] = token
     
@@ -53,29 +52,30 @@ class RegisterGuideView(APIView):
 
 class RegisterTouristView(generics.GenericAPIView):
 
-    serializer_class = RegisterTouristSerializer
     
     def post(self,request):
-        user = request.data
-        serializer = self.serializer_class(data=user)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
+        serializer = RegisterTouristSerializer(data = request.data)
+        if serializer.is_valid(raise_exception = True):
+            tourist,user = serializer.create(validated_data = request.data)
+            user.is_tourst = True
+            user.save()
 
-        user = User.objects.get(email=request.data.user.email[0])
-        uidb64 = urlsafe_base64_encode(smart_bytes(user.id))
-        token = PasswordResetTokenGenerator().make_token(user)
-        current_site = get_current_site(
-            request=request).domain
-        relativeLink = reverse(
-            'confirm-email', kwargs={'uidb64': uidb64,'token':token}
-            )
-        absurl = 'http://localhost:8000' + relativeLink
-        
-        send_mail('GuideMe: Confirm you email','Use this link to activate your account:\n\n'+absurl,'projectguy.temp@gmail.com',[user.email,])
+            uidb64 = urlsafe_base64_encode(smart_bytes(user.id))
+            token = Token.objects.get(user=user)
+            current_site = get_current_site(
+                request=request).domain
+            relativeLink = reverse(
+                'confirm-email', kwargs={'uidb64': uidb64,'token':token}
+                )
+            absurl = 'http://localhost:8000' + relativeLink
+            
+            send_mail('GuideMe: Confirm you email','Hi'+user.username+',\nUse this link to activate your account:\n\n'+absurl,'projectguy.temp@gmail.com',[user.email,])
 
-        serializer.data['token'] = token
+            serializer.data['token'] = token
 
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.error_messages,
+                        status=status.HTTP_400_BAD_REQUEST)
 
 
 def VerifyEmail(request,uidb64,token):
@@ -85,7 +85,7 @@ def VerifyEmail(request,uidb64,token):
         if not user.email_confirm:
             user.email_confirm = True
             user.save()
-            email_body = 'Your email was successfully verified. Thanks for registering.'
+            email_body = 'Hi'+user.username+',\nYour email was successfully verified. Thanks for registering.'
             send_mail('Welcome to GuidMe',email_body,'projectguy.temp@gmail.com',[user.email,])
             return redirect(FRONTEND_URL+'/login/')
     else:
@@ -125,7 +125,7 @@ class RequestPasswordResetEmail(generics.GenericAPIView):
                 )
             absurl = FRONTEND_URL + relativeLink
             
-            send_mail('GuideMe: Reset you password','User this link to reset password:\n\n'+absurl,'projectguy.temp@gmail.com',[user.email,])
+            send_mail('GuideMe: Reset you password','Hi'+user.username+',\nUse this link to reset password:\n\n'+absurl,'projectguy.temp@gmail.com',[user.email,])
         
             return Response({'success': 'We have sent you a link to reset your password'}, status=status.HTTP_200_OK)
 
@@ -174,12 +174,13 @@ class LogoutAPIView(generics.GenericAPIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class CurrentUserView(views.APIView):
-    permission_classes = (permissions.IsAuthenticated,)
     def get(self,request,username):
-       
+        try:
             data = User.objects.get(username=username)
-            if request.method=='GET':
-                serializer = UserSerializer(data)
-                return Response(serializer.data)
-
+            if data.is_guide:
+                if request.method=='GET':
+                    serializer = UserSerializer(data)
+                    return Response(serializer.data)
+        except:
+            return Response(status=status.HTTP_204_NO_CONTENT)
 

@@ -5,10 +5,12 @@ export class Navbar extends Component {
   handleLogout=()=>{
     localStorage.clear();
     this.props.setUser(null);
+    console.log("----------user------------",this.props.user);
   }
 
   render(){
     let  but_logout,but_login,rguide,rtourist;
+    console.log('user-------',this.props.user)
     if(localStorage.getItem('token')!=null)
     {
         but_logout=(

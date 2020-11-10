@@ -32,29 +32,28 @@ register=event=>{
             })
         }).catch(
             err=>{
+              this.setState({message:''});
 
+              if (err.response && err.response.data.user && err.response.data.user.username) {
+                message1 = err.response.data.user.username[0]
+              }
               if (err.response && err.response.data.user && err.response.data.user.email) {
                 message1 = err.response.data.user.email[0]
               }
-              else if (err.response && err.response.data.user && err.response.data.user.username) {
-                message1 = err.response.data.user.username[0]
-              }
-              else if (err.response && err.response.data.user && err.response.data.user.first_name) {
+              if (err.response && err.response.data.user && err.response.data.user.first_name) {
                 message1 = err.response.data.user.first_name[0]
               }
-              else if (err.response && err.response.data.user && err.response.data.user.last_name) {
+              if (err.response && err.response.data.user && err.response.data.user.last_name) {
                 message1 = err.response.data.user.last_name[0]
               }
-              else if (err.response && err.response.data.user && err.response.data.user.languages) {
+              if (err.response && err.response.data.user && err.response.data.user.languages) {
                 message1 = 'languages field cannot be blank'
               }
-              else if (err.response && err.response && err.response.data.error) {
+              if (err.response && err.response && err.response.data.error) {
                 message1 = err.response.data.error
               }
-              else {
-                if (err.response && err.response.data.user && err.response.data.user.password) {
-                  message1 = err.response.data.user.password
-                }
+              if (err.response && err.response.data.user && err.response.data.user.password) {
+                message1 = err.response.data.user.password
               }
               this.setState(
                 {
