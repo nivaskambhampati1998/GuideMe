@@ -1,8 +1,7 @@
 # SOAD-project	(GuideMe)
 
 [![Build Status](https://travis-ci.com/venky012/GuideMe.svg?token=a5pFPnEPqqri9dMzjwCe&branch=master)](https://travis-ci.com/venky012/GuideMe)
-[![Coverage Status](https://coveralls.io/repos/github/venky012/GuideMe/badge.svg?t=br2fwa)](https://coveralls.io/github/venky012/GuideMe)
-	
+
 ### Project and environment setup
 ```bash
 # Setup environment

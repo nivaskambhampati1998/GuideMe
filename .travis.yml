@@ -8,7 +8,6 @@ matrix:
       - DJANGO=2.2.10
     install:
       - pip3 install -r requirements.txt
-      - pip3 install coveralls
     script:
       - python manage.py test
     before_script:
@@ -16,7 +15,6 @@ matrix:
       - python manage.py migrate
     script:
       - python manage.py check
-      - coverage run manage.py test
       
   - language: node_js
     node_js:
@@ -28,8 +26,6 @@ matrix:
       - cd frontend/
       - npm install
       - npm test
-after_success:
-  coveralls
 
 notifications:
   email:
