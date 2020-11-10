@@ -16,6 +16,7 @@ matrix:
       - python manage.py migrate
     script:
       - python manage.py check
+      - coverage run manage.py test
       
   - language: node_js
     node_js:
