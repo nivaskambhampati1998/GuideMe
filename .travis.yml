@@ -24,7 +24,7 @@ matrix:
       directories:
       - node_modules
     script:
-      - cd frontend
+      - cd frontend/
       - npm install
       - npm test
 after_success:
