@@ -1,6 +1,15 @@
 from django.db import models
 
 # Create your models here.
+
+
+def update_filename(instance, filename):
+    upload_to = 'monuments'
+    ext = filename.split('.')[-1]
+    if instance.username:
+        filename = '{}.{}'.format(instance.username, ext)
+    return os.path.join(upload_to, filename)
+
 class City(models.Model):
     city_id = models.AutoField(primary_key = True)
     city_name = models.CharField(max_length = 50)
@@ -17,6 +26,7 @@ class Monument(models.Model):
     city = models.ForeignKey(City,on_delete = models.CASCADE)
     basicinfo = models.CharField(max_length = 100)
     description = models.TextField()
+    image = models.ImageField(upload_to=update_filename,blank = True)
 
     def __str__(self):
         return self.monument_name

@@ -15,7 +15,6 @@ class  RegisterTourist  extends Component {
 register=event=>{
   let message1='';
     event.preventDefault();
-  console.log(this.state.credentials);
 
   if(this.state.password1 != this.state.credentials.user.password){
     this.setState({
@@ -83,18 +82,22 @@ inputChanged= event=>{
 }
 
 
-render()
-{
-    let error='';
-    if(this.state.registered)
-    {
+  render()
+  {
+    let error = '';
+    const sleep = (milliseconds) => {
+      return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
+    if (this.state.registered) {
       error=(
         <div class="alert alert-success alert-dismissible" style={{ marginTop:'100px' }}>
           <button type="button" class="close" data-dismiss="alert">&times;</button>
           <strong>User succefully created.</strong>
         </div>
       )
-      return <Redirect to={'/login'} />
+      sleep(1500).then(() => {
+        return <Redirect to={'/login'} />
+      })
     }
     if(this.state.message)
     {

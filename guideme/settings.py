@@ -44,6 +44,11 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',        # to clean the user profile photo and update new photo
     'accounts',
     'monuments',
+    'blog',
+    'blog_api',
+    'guide_api',
+    'review_api',
+    'posting',
 ]
 
 SITE_ID = 1
@@ -143,7 +148,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOGIN_REDIRECT_URL = '/login/'
+LOGIN_REDIRECT_URL = '/accounts/login/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/

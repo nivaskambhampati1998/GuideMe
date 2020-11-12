@@ -98,7 +98,7 @@ export class Login extends Component {
                   </button>
                 </div>
                 <div className="text-center p-t-90">
-                  <Link to={'/password-reset'}><a className="txt1" href="">
+                  <Link to={'/accounts/password-reset/'}><a className="txt1" href="">
                     Forgot Password?
                   </a></Link>
                 </div>

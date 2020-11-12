@@ -12,7 +12,6 @@ class ResetPasswordConfirm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log(this.password,'------------',this.confirmpassword);
         if (this.password !== this.confirmpassword) {
             this.setState({
                 message: 'Passwords do not match'
@@ -31,7 +30,7 @@ class ResetPasswordConfirm extends Component {
                     'Content-Type': 'application/json',
                 }
             };
-            axios.patch('http://localhost:8000/accounts/password-reset-complete', data, config).then(
+            axios.patch('http://localhost:8000/accounts/password-reset-complete/', data, config).then(
                 res => {
                     this.setState({
                         reset: true,
@@ -61,7 +60,7 @@ class ResetPasswordConfirm extends Component {
 
 
         if (this.state.reset) {
-            return <Redirect to='/login' />
+            return <Redirect to='/' />
         }
         return (
             <div>

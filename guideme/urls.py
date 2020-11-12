@@ -23,6 +23,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('places/', include('monuments.urls')),
+    path('posting/', include('posting.api.urls'),name="api-posting"),
+    path('reviewOnPlaces/',include('blog_api.urls',namespace='reviewOnPlaces')),
+    path('reviewOnGuides/',include('review_api.urls',namespace='reviewOnGuides')),
+    path('guides/',include('guide_api.urls',namespace='guides')),
 ]
 
 if settings.DEBUG:

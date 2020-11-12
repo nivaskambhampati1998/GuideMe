@@ -103,6 +103,9 @@ export class RegisterGuide extends Component {
 
   render() {
     let error = '';
+    const sleep = (milliseconds) => {
+      return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
     if (this.state.registered) {
       error=(
         <div class="alert alert-success alert-dismissible" style={{ marginTop:'100px' }}>
@@ -110,7 +113,9 @@ export class RegisterGuide extends Component {
           <strong>User succefully created.</strong>
         </div>
       )
-      return <Redirect to={'/login'} />
+      sleep(1500).then(() => {
+        return <Redirect to={'/login'} />
+      })
     }
     if (this.state.message) {
       error = (

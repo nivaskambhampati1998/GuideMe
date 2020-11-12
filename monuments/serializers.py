@@ -5,7 +5,7 @@ from monuments.models import Monument, City
 class MonumentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Monument
-        fields = ('monument_id', 'monument_name', 'city', 'basicinfo', 'description')
+        fields = ('monument_id', 'monument_name', 'city', 'basicinfo', 'description','image')
 
     def create(self, validated_data):
         try:
@@ -20,6 +20,7 @@ class MonumentSerializer(serializers.ModelSerializer):
         instance.city = validated_data.get('city', instance.city)
         instance.basic_info = validated_data.get('basic_info', instance.basic_info)
         instance.description = validated_data.get('description', instance.description)
+        instance.image = validated_data.get('image', instance.image)
         instance.save()
         return super().update(instance, validated_data)
 

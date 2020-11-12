@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import axios from 'axios';
 
 export class Navbar extends Component {
+  state = {}
+  
+  componentDidMount = () => {
+    this.setState({user:this.props.user});
+  }
   handleLogout=()=>{
     localStorage.clear();
     this.props.setUser(null);
-    console.log("----------user------------",this.props.user);
   }
-
+  
   render(){
-    let  but_logout,but_login,rguide,rtourist;
-    console.log('user-------',this.props.user)
+    let  but_logout,but_login,rguide,rtourist,profile;
     if(localStorage.getItem('token')!=null)
     {
+        profile = (
+          <li className="nav-item"><NavLink className="nav-link" to={this.props.username}>Profile</NavLink></li>
+        )
         but_logout=(
           <li className="nav-item"><NavLink className="nav-link" to={"/"} onClick={this.handleLogout}>Logout</NavLink></li>
         )
@@ -42,12 +49,13 @@ export class Navbar extends Component {
                   <li className="nav-item">
                     <NavLink className="nav-link" to='/'>Home</NavLink>
                   </li>
-                  <li className="nav-item"><NavLink className="nav-link" to='/place'>place</NavLink></li>
+                  <li className="nav-item"><NavLink className="nav-link" to='/place'>Place</NavLink></li>
                   <li className="nav-item"><NavLink className="nav-link" to='/blog'>Blog</NavLink></li>
                   <li className="nav-item"><NavLink className="nav-link" to='/contact'>Contact us</NavLink></li>
                     {but_login}
                     {rguide}
                     {rtourist}
+                    {profile}
                     {but_logout}
                 </ul>
               </div>

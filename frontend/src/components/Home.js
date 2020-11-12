@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link, NavLink } from 'react-router-dom';
 
 export class Home extends Component {
   render() {
@@ -20,22 +21,22 @@ export class Home extends Component {
             <div className="carousel-item active">
               <img src="assets/images/slider-image-1-1920x600.jpg" style={{width:'100%'}} width={1100} height={500}/>
               <div className="carousel-caption">
-                <h4>Find your car today!</h4>
+                <h1 style={{color:'black'}}>Book your trip today!</h1>
                 <h2>Lorem ipsum dolor sit amet</h2>
               </div>   
             </div>
             <div className="carousel-item">
               <img src="assets/images/slider-image-2-1920x600.jpg" style={{width:'100%'}} width={1100} height={500}/>
               <div className="carousel-caption">
-                <h4>Fugiat Aspernatur</h4>
-                <h2>Laboriosam reprehenderit ducimus</h2>
+                <h1 style={{color:'black'}}>Book your trip today!</h1>
+                <h2>Lorem ipsum dolor sit amet</h2>
               </div>   
             </div>
             <div className="carousel-item">
               <img src="assets/images/slider-image-3-1920x600.jpg" style={{width:'100%'}} width={1100} height={500}/>
               <div className="carousel-caption">
-                <h4>Saepe Omnis</h4>
-                <h2>Quaerat suscipit unde minus dicta</h2>
+                <h1 style={{color:'black'}}>Book your trip today!</h1>
+                <h2>Lorem ipsum dolor sit amet</h2>
               </div>   
             </div>
           </div>
@@ -57,36 +58,30 @@ export class Home extends Component {
               </div>
               <div className="col-md-4">
                 <div className="service-item">
-                  <div className="icon">
-                    <i className="fa fa-user" />
-                  </div>
+                  <img src="https://specials-images.forbesimg.com/imageserve/5d3871cff1176b0008977f70/960x0.jpg?fit=scale" style={{ width:'260px',height:'150px'}} alt="" />
                   <div className="down-content">
                     <h4>John Doe</h4>
-                    <p className="n-m"><em>"Tour guides lead visitors through tourist attractions and give information about the attractions' natural and cultural significance. Often, they also act as interpreters for travelers who do not speak the local language. Automated systems like audio tours are sometimes substituted for human tour guides. Tour operators often hire guides to lead tourist groups."</em></p>
+                    <p className="n-m"><em>"Tour guides lead visitors through tourist attractions and give information about the attractions' natural and cultural significance."</em></p>
                     <button style={{ backgroundColor: 'red', textAlign: 'center', width: '100px', borderRadius: '10px', borderStyle: 'initial', color: 'white' }}> Book </button>
                   </div>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="service-item">
-                  <div className="icon">
-                    <i className="fa fa-user" />
-                  </div>
+                  <img src="https://i.guim.co.uk/img/media/c1a40be9bb16ddac7902147d384d6e3236964721/0_0_3500_2100/master/3500.jpg?width=620&quality=85&auto=format&fit=max&s=5c7b31e1069d0fcdfcf8d2cd640d91cb" style={{ width:'260px',height:'150px'}} alt="" />
                   <div className="down-content">
                     <h4>Jane Smith</h4>
-                    <p className="n-m"><em>"Tour guides lead visitors through tourist attractions and give information about the attractions' natural and cultural significance. Often, they also act as interpreters for travelers who do not speak the local language. Automated systems like audio tours are sometimes substituted for human tour guides. Tour operators often hire guides to lead tourist groups."</em></p>
+                    <p className="n-m"><em>"Tour guides lead visitors through tourist attractions and give information about the attractions' natural and cultural significance."</em></p>
                     <button style={{ backgroundColor: 'red', textAlign: 'center', width: '100px', borderRadius: '10px', borderStyle: 'initial', color: 'white' }}> Book </button>
                   </div>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="service-item">
-                  <div className="icon">
-                    <i className="fa fa-user" />
-                  </div>
+                  <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" style={{ width:'260px',height:'150px'}} alt="" />
                   <div className="down-content">
                     <h4>Antony Davis</h4>
-                    <p className="n-m"><em>"Tour guides lead visitors through tourist attractions and give information about the attractions' natural and cultural significance. Often, they also act as interpreters for travelers who do not speak the local language. Automated systems like audio tours are sometimes substituted for human tour guides. Tour operators often hire guides to lead tourist groups."</em></p>
+                    <p className="n-m"><em>"Tour guides lead visitors through tourist attractions and give information about the attractions' natural and cultural significance."</em></p>
                     <button style={{ backgroundColor: 'red', textAlign: 'center', width: '100px', borderRadius: '10px', borderStyle: 'initial', color: 'white' }}> Book </button>
                   </div>
                 </div>
@@ -175,76 +170,6 @@ export class Home extends Component {
                   <div className="down-content">
                     <h4><a href="#">Aperiam modi voluptatum fuga officiis cumque</a></h4>
                     <p style={{ margin: 0 }}> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="happy-clients">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12">
-                <div className="section-heading">
-                  <h2>Reviews</h2>
-                  <a href="testimonials.html">read more <i className="fa fa-angle-right" /></a>
-                </div>
-              </div>
-              <div className="col-md-12">
-                <div className="owl-clients owl-carousel text-center">
-                  <div className="service-item">
-                    <div className="icon">
-                      <i className="fa fa-user" />
-                    </div>
-                    <div className="down-content">
-                      <h4>John Doe</h4>
-                      <p className="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat."</em></p>
-                    </div>
-                  </div>
-                  <div className="service-item">
-                    <div className="icon">
-                      <i className="fa fa-user" />
-                    </div>
-                    <div className="down-content">
-                      <h4>Jane Smith</h4>
-                      <p className="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat."</em></p>
-                    </div>
-                  </div>
-                  <div className="service-item">
-                    <div className="icon">
-                      <i className="fa fa-user" />
-                    </div>
-                    <div className="down-content">
-                      <h4>Antony Davis</h4>
-                      <p className="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat."</em></p>
-                    </div>
-                  </div>
-                  <div className="service-item">
-                    <div className="icon">
-                      <i className="fa fa-user" />
-                    </div>
-                    <div className="down-content">
-                      <h4>John Doe</h4>
-                      <p className="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat."</em></p>
-                    </div>
-                  </div>
-                  <div className="service-item">
-                    <div className="icon">
-                      <i className="fa fa-user" />
-                    </div>
-                    <div className="down-content">
-                      <h4>Jane Smith</h4>
-                      <p className="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat."</em></p>
-                    </div>
-                  </div>
-                  <div className="service-item">
-                    <div className="icon">
-                      <i className="fa fa-user" />
-                    </div>
-                    <div className="down-content">
-                      <h4>Antony Davis</h4>
-                      <p className="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat."</em></p>
-                    </div>
                   </div>
                 </div>
               </div>

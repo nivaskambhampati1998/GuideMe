@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 export class Blog extends Component {
   render() {
     return (
       <div>
+        {/* ***** Preloader Start ***** */}
+
+        {/* ***** Preloader End ***** */}
         {/* Header */}
         {/* Page Content */}
         <div className="page-heading about-heading header-text" style={{ backgroundImage: 'url(assets/images/heading-6-1920x500.jpg)' }}>
@@ -26,9 +30,9 @@ export class Blog extends Component {
                   <div className="col-md-5 col-sm-11">
                     <div className="box" style={{ margin: '10px' }}>
                       <div className="service-item">
-                        <a href="blog-details.html" className="services-item-image"><img src="assets/images/blog-1-370x270.jpg" className="img-fluid" alt="" /></a>
+                        <NavLink to="/blogdetails" className="services-item-image"><img src="assets/images/blog-1-370x270.jpg" className="img-fluid" alt="" /></NavLink>
                         <div className="down-content">
-                          <h4><a href="blog-details.html">Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</a></h4>
+                          <h4><NavLink to="/blogdetails">Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</NavLink></h4>
                           <p style={{ margin: 0 }}> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
                         </div>
                       </div>
@@ -37,9 +41,9 @@ export class Blog extends Component {
                   <div className="col-md-5 col-sm-11">
                     <div className="box" style={{ margin: '10px' }}>
                       <div className="service-item">
-                        <a href="blog-details.html" className="services-item-image"><img src="assets/images/blog-2-370x270.jpg" className="img-fluid" alt="" /></a>
+                        <NavLink to='/blogdetails' className="services-item-image"><img src="assets/images/blog-2-370x270.jpg" className="img-fluid" alt="" /></NavLink>
                         <div className="down-content">
-                          <h4><a href="blog-details.html">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h4>
+                          <h4><NavLink to='/blogdetails'>Lorem ipsum dolor sit amet consectetur adipisicing elit</NavLink></h4>
                           <p style={{ margin: 0 }}> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
                         </div>
                       </div>
@@ -48,9 +52,9 @@ export class Blog extends Component {
                   <div className="col-md-5 col-sm-11">
                     <div className="box" style={{ margin: '10px' }}>
                       <div className="service-item">
-                        <a href="blog-details.html" className="services-item-image"><img src="assets/images/blog-3-370x270.jpg" className="img-fluid" alt="" /></a>
+                        <NavLink to='/blogdetails' className="services-item-image"><img src="assets/images/blog-3-370x270.jpg" className="img-fluid" alt="" /></NavLink>
                         <div className="down-content">
-                          <h4><a href="blog-details.html">Aperiam modi voluptatum fuga officiis cumque</a></h4>
+                          <h4><NavLink to='/blogdetails'>Aperiam modi voluptatum fuga officiis cumque</NavLink></h4>
                           <p style={{ margin: 0 }}> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
                         </div>
                       </div>
@@ -59,9 +63,9 @@ export class Blog extends Component {
                   <div className="col-md-5 col-sm-11">
                     <div className="box" style={{ margin: '10px' }}>
                       <div className="service-item">
-                        <a href="blog-details.html" className="services-item-image"><img src="assets/images/blog-3-370x270.jpg" className="img-fluid" alt="" /></a>
+                        <NavLink to='/blogdetails' className="services-item-image"><img src="assets/images/blog-3-370x270.jpg" className="img-fluid" alt="" /></NavLink>
                         <div className="down-content">
-                          <h4><a href="blog-details.html">Aperiam modi voluptatum fuga officiis cumque</a></h4>
+                          <h4><NavLink to='/blogdetails'>Aperiam modi voluptatum fuga officiis cumque</NavLink></h4>
                           <p style={{ margin: 0 }}> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
                         </div>
                       </div>
@@ -73,7 +77,7 @@ export class Blog extends Component {
                       <li className="active"><a href="#">2</a></li>
                       <li><a href="#">3</a></li>
                       <li><a href="#">4</a></li>
-                      <li><a href="#"><i className="fa fa-angle-double-right" /></a></li>
+                      <li><i className="fa fa-angle-double-right"></i></li>
                     </ul>
                   </div>
                 </div>

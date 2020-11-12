@@ -79,7 +79,7 @@ class ResetPassword extends Component {
                         
                     <div className="container-login100-form-btn">
                       <button type="submit" className="login100-form-btn">
-                        Login
+                        Submit
                       </button>
                     </div>
                     <div className="text-center p-t-90">
