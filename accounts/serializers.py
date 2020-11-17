@@ -62,6 +62,12 @@ class RegisterTouristSerializer(serializers.HyperlinkedModelSerializer):
         tourist, created = Tourist.objects.update_or_create(user=user,**validated_data)
         return tourist,user
 
+class UpdateUserSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        fields = ['first_name','last_name','avatar','languages']
+        model = User
+
 
 class LoginSerializer(serializers.ModelSerializer):
     

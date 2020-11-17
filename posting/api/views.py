@@ -1,6 +1,6 @@
 
 from django.db.models import Q
-from rest_framework import generics, mixins
+from rest_framework import generics, mixins,permissions
 
 from .permission import IsOwnerOrReadOnly
 from .serializers import BlogPostSerializer
@@ -11,7 +11,7 @@ class BlogPostAPIView(mixins.CreateModelMixin, generics.ListAPIView):
 
     lookup_field = 'pk'
     serializer_class = BlogPostSerializer
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [IsOwnerOrReadOnly,permissions.IsAuthenticated]
 
     #queryset = BlogPost.objects.all()
 

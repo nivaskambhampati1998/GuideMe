@@ -36,11 +36,14 @@ class Review(models.Model):
         validators=[MaxValueValidator(5), MinValueValidator(1)]
      )
     review = models.TextField()
-    id = models.IntegerField(unique=True,primary_key=True)
+    id = models.AutoField(primary_key=True)
     author = models.ForeignKey(Tourist, on_delete=models.CASCADE, related_name='blog_reviews')
     
     objects = models.Manager()  # default manager
     reviewobjects = ReviewObjects()  # custom manager
+
+    def __str__(self):
+        return self.review
 
 
    

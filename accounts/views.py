@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from rest_framework import generics, status, views, permissions
-from .serializers import UserSerializer,RegisterGuideSerializer,RegisterTouristSerializer,LogoutSerializer,LoginSerializer,ResetPasswordEmailRequestSerializer,SetNewPasswordSerializer
+from .serializers import UserSerializer,RegisterGuideSerializer,UpdateUserSerializer,RegisterTouristSerializer,LogoutSerializer,LoginSerializer,ResetPasswordEmailRequestSerializer,SetNewPasswordSerializer
 from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -229,3 +229,25 @@ def DeleteAccount(request,uidb64,token):
     else:
         return HttpResponse('Token authentication failed')
     return redirect(FRONTEND_URL+'/')
+
+class UpdateUserProfile(APIView):
+
+    parser_classes = (MultiPartParser, FormParser)
+
+    def post(self,request,username):
+        print(request.data,'-----------------------------request.data')
+        try:
+            if request.method=='POST':
+                user = User.objects.get(username = username)
+                if 'first_name' in request.data.keys():
+                    user.first_name = request.data['first_name']
+                if 'last_name' in request.data.keys():
+                    user.last_name = request.data['last_name']
+                if 'languages' in request.data.keys():
+                    user.languages = request.data['languages']
+                if 'avatar' in request.data.keys():
+                    user.avatar = request.data['avatar']
+                user.save()
+                return Response(status=status.HTTP_204_NO_CONTENT)
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
