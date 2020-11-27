@@ -5,9 +5,10 @@ from rest_framework import generics, mixins
 from .permission import IsOwnerOrReadOnly
 from .serializers import BlogPostSerializer
 from posting.models import BlogPost
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class BlogPostAPIView(mixins.CreateModelMixin, generics.ListAPIView):
+class BlogPostAPIView(generics.ListAPIView):
 
     lookup_field = 'pk'
     serializer_class = BlogPostSerializer
