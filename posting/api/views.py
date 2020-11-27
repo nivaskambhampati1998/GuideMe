@@ -8,7 +8,7 @@ from posting.models import BlogPost
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class BlogPostAPIView(generics.ListAPIView):
+class BlogPostAPIView(mixins.CreateModelMixin,generics.ListAPIView):
 
     lookup_field = 'pk'
     serializer_class = BlogPostSerializer
