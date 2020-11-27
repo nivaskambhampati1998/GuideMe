@@ -2,7 +2,6 @@ import React,{Component}from 'react';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
-
 class  RegisterTourist  extends Component {
   state={
       credentials:{user:{username:'',email:'',first_name:'',last_name:'',languages:'',password:''}},
@@ -85,19 +84,8 @@ inputChanged= event=>{
   render()
   {
     let error = '';
-    const sleep = (milliseconds) => {
-      return new Promise(resolve => setTimeout(resolve, milliseconds))
-    }
     if (this.state.registered) {
-      error=(
-        <div class="alert alert-success alert-dismissible" style={{ marginTop:'100px' }}>
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <strong>User succefully created.</strong>
-        </div>
-      )
-      sleep(1500).then(() => {
-        return <Redirect to={'/login'} />
-      })
+			window.location.pathname = '/message';
     }
     if(this.state.message)
     {
@@ -156,10 +144,6 @@ inputChanged= event=>{
                     </div>
                   </div>
                   <div className='col-md-6'>
-                    <div className="wrap-input100 validate-input" data-validate="Enter number">
-                      <input className="input100" type="number" name="number" placeholder="Mobile Number" />
-                      <span className="focus-input100" data-placeholder="" />
-                    </div>
                     <div className="wrap-input100 validate-input" data-validate="Enter Gender">
                       <input className="input100" type="text" name="languages" placeholder="Languages Known" 
                       value={this.state.credentials.languages} 

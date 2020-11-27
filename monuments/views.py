@@ -1,8 +1,8 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
-from monuments.models import Monument, City
-from .serializers import MonumentSerializer, CitySerializer
+from monuments.models import Monument
+from .serializers import MonumentSerializer
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework.views import APIView
 
@@ -17,14 +17,15 @@ class MonumentList(APIView):
         except ObjectDoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
-    def post(self, request):
-        Monument_data = JSONParser().parse(request)
-        serializer = MonumentSerializer(data=Monument_data)
+    def post(self, request, *args, **kwargs):
+        serializer = MonumentSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            print('error', serializer.errors)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 class MonumentDetail(APIView):
@@ -51,55 +52,4 @@ class MonumentDetail(APIView):
         data = {'message': 'error during deletion'}
         if delresult[0] == 1:
             data = {'message': 'successfully deleted'}
-        return Response(data)
-
-
-class CityList(APIView):
-    def get(self, request):
-        try:
-            data = City.objects.all()
-            serializer = CitySerializer(data, many=True)
-            data = serializer.data
-            for x in range(len(data)):
-                data[x]['city_id'] = City.objects.get(city_name=data[x]['city_name']).city_id
-            return Response(data)
-        except ObjectDoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-
-    def post(self, request):
-        city_data = JSONParser().parse(request)
-        serializer = CitySerializer(data=city_data)
-        if serializer.is_valid():
-            serializer.save()
-            data = serializer.data
-            data['city_id'] = City.objects.get(city_name=data['city_name']).city_id
-            return Response(data)
-        else:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
-
-
-class CityDetail(APIView):
-    def get(self, request, slug):
-        try:
-            hdata = City.objects.get(city_id=slug)
-            serializer = CitySerializer(hdata)
-            return Response(serializer.data)
-        except ObjectDoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-
-    def put(self, request, slug):
-        hdata = City.objects.get(city_id=slug)
-        serializer = CitySerializer(hdata, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        else:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, slug):
-        hdata = City.objects.get(city_id=slug)
-        delresult = hdata.delete()
-        data = {'message': 'Error during deletion'}
-        if delresult[0] == 1:
-            data = {'message': 'Successfully deleted'}
         return Response(data)

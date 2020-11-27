@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
+
 export class RegisterGuide extends Component {
   state = {
     credentials: { user: { username: '', email: '', first_name: '', last_name: '', languages: '', password: '' }, places_known: '', rating: 0 },
@@ -88,22 +89,36 @@ export class RegisterGuide extends Component {
       this.setState({ credentials: cred });
     }
   }
+  
+
+  constructor(props) {
+    super(props);
+    this.autocompleteInput = React.createRef();
+    this.autocomplete = null;
+    this.handlePlaceChanged = this.handlePlaceChanged.bind(this);
+  }
+
+  componentDidMount() {
+    const google = window.google;
+    this.autocomplete = new google.maps.places.Autocomplete(this.autocompleteInput.current,
+        {"types": ["geocode"]});
+
+    this.autocomplete.addListener('place_changed', this.handlePlaceChanged);
+  }
+
+  handlePlaceChanged(){
+    const place = this.autocomplete.getPlace();
+    const cred = this.state.credentials;
+    cred['places_known'] = place.formatted_address;
+    this.setState({ credentials: cred });
+  }
+
 
   render() {
     let error = '';
-    const sleep = (milliseconds) => {
-      return new Promise(resolve => setTimeout(resolve, milliseconds))
-    }
+    
     if (this.state.registered) {
-      error=(
-        <div class="alert alert-success alert-dismissible" style={{ marginTop:'100px' }}>
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <strong>User succefully created.</strong>
-        </div>
-      )
-      sleep(1500).then(() => {
-        return <Redirect to={'/login'} />
-      })
+			window.location.pathname = '/message';
     }
     if (this.state.message) {
       error = (
@@ -159,20 +174,18 @@ export class RegisterGuide extends Component {
                       <span className="focus-input100" data-placeholder="" />
                     </div>
 
+                  </div>
+                  <div className='col-md-6'>
                     <div className="wrap-input100 validate-input" data-validate="Enter Gender">
                       <input className="input100" type="text" name="languages" placeholder="Languages Known" 
                       value={this.state.credentials.languages} 
                       onChange={this.inputChanged}/>
                       <span className="focus-input100" data-placeholder="" />
                     </div>
-                  </div>
-                  <div className='col-md-6'>
-                    <div className="wrap-input100 validate-input" data-validate="Enter number">
-                      <input className="input100" type="number" name="number" placeholder="Mobile Number" />
-                      <span className="focus-input100" data-placeholder="" />
-                    </div>
                     <div className="wrap-input100 validate-input" data-validate="Enter Locations">
                       <input className="input100" type="text" name="places_known" placeholder="Location's known" 
+                      ref={this.autocompleteInput}  
+                      id="autocomplete"
                       value={this.state.credentials.places_known} 
                       onChange={this.inputChanged}/>
                       <span className="focus-input100" data-placeholder="" />
@@ -189,10 +202,6 @@ export class RegisterGuide extends Component {
                       onChange={this.inputChanged}/>
                       <span className="focus-input100" data-placeholder="" />
                     </div>
-                    {/* <label style={{color:'white'}}>Profile picture:&nbsp;&nbsp;&nbsp;</label>
-                    <input type="file" name="avatar" accept="image/png, image/jpeg" 
-                    value={this.state.credentials.avatar} 
-                    onChange={this.inputImageChanged}/> */}
                   </div>
                 </div>
                 <div className="container-login100-form-btn">

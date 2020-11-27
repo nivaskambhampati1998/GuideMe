@@ -17,6 +17,8 @@ import ProfilePage from './components/ProfilePage';
 import Testimonial from './components/Testimonial';
 import Blogdetails from './components/Blogdetails';
 import UpdateProfile from './components/UpdateProfile';
+import DisplayMessage from './components/DisplayMessage';
+import PostMonument from './components/PostMonument';
 
 
 class App extends Component {
@@ -69,9 +71,11 @@ class App extends Component {
 						<Route path='/update-profile/:username/' setUser={this.setUser} component={UpdateProfile} />
 						<Route path='/blogdetails' component={Blogdetails} />
 						<Route path='/testimonial' component={Testimonial} />
+						<Route path='/message' component={DisplayMessage} />
 						<Route path='/contact' component={Contact} />
 						<Route path='/blog' component={Blog} />
 						<Route path='/login' component={Login} />
+						<Route path='/addPlace' component={PostMonument} />
 						<Route path='/place' component={Place} />
 					</Switch>
 				</Router>
