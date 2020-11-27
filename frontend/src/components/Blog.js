@@ -1,7 +1,30 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
+import axios from 'axios';
 
-export class Blog extends Component {
+class Blog extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      data: []
+    }
+  }
+  componentDidMount = () => {
+      
+        axios.get('http://localhost:8000/posting/').then(
+          res => {
+            var data = res.data
+            this.setState({data : data})
+          },
+          err => {
+            console.log(err)
+          }
+        )	
+  }
+  
+
   render() {
     return (
       <div>
@@ -15,7 +38,7 @@ export class Blog extends Component {
             <div className="row">
               <div className="col-md-12">
                 <div className="text-content">
-                  <h4>Lorem ipsum dolor sit amet</h4>
+                  <h4>Lorem epsum nnnn</h4>
                   <h2>Blog</h2>
                 </div>
               </div>
@@ -27,50 +50,20 @@ export class Blog extends Component {
             <div className="row">
               <div className="col-md-8">
                 <div className="row">
-                  <div className="col-md-5 col-sm-11">
-                    <div className="box" style={{ margin: '10px' }}>
-                      <div className="service-item">
-                        <NavLink to="/blogdetails" className="services-item-image"><img src="assets/images/blog-1-370x270.jpg" className="img-fluid" alt="" /></NavLink>
-                        <div className="down-content">
-                          <h4><NavLink to="/blogdetails">Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</NavLink></h4>
-                          <p style={{ margin: 0 }}> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-5 col-sm-11">
-                    <div className="box" style={{ margin: '10px' }}>
-                      <div className="service-item">
-                        <NavLink to='/blogdetails' className="services-item-image"><img src="assets/images/blog-2-370x270.jpg" className="img-fluid" alt="" /></NavLink>
-                        <div className="down-content">
-                          <h4><NavLink to='/blogdetails'>Lorem ipsum dolor sit amet consectetur adipisicing elit</NavLink></h4>
-                          <p style={{ margin: 0 }}> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  { this.state.data.map(d=>(
                   <div className="col-md-5 col-sm-11">
                     <div className="box" style={{ margin: '10px' }}>
                       <div className="service-item">
                         <NavLink to='/blogdetails' className="services-item-image"><img src="assets/images/blog-3-370x270.jpg" className="img-fluid" alt="" /></NavLink>
                         <div className="down-content">
-                          <h4><NavLink to='/blogdetails'>Aperiam modi voluptatum fuga officiis cumque</NavLink></h4>
-                          <p style={{ margin: 0 }}> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
+                          <h4><NavLink to='/blogdetails'>{d.title}</NavLink></h4>
+                  <p style={{ margin: 0 }}>  {d.content.substring(0,99)} &nbsp;...&nbsp;&nbsp;</p>
+                  <p>|&nbsp;&nbsp; {d.timestamp.substring(0,10)} &nbsp; {d.timestamp.substring(11,19)}&nbsp;</p>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-5 col-sm-11">
-                    <div className="box" style={{ margin: '10px' }}>
-                      <div className="service-item">
-                        <NavLink to='/blogdetails' className="services-item-image"><img src="assets/images/blog-3-370x270.jpg" className="img-fluid" alt="" /></NavLink>
-                        <div className="down-content">
-                          <h4><NavLink to='/blogdetails'>Aperiam modi voluptatum fuga officiis cumque</NavLink></h4>
-                          <p style={{ margin: 0 }}> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                   <div className="col-md-12">
                     <ul className="pages">
                       <li><a href="#">1</a></li>

@@ -10,7 +10,7 @@ class BlogPost(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=120, null=True, blank=True)
     city = models.CharField(max_length=30,null=True,blank=True,default='mumbai')
-    content = models.TextField(max_length=120, null=True, blank=True)
+    content = models.TextField(max_length=12000, null=True, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

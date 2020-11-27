@@ -105,9 +105,9 @@ class PostMonument extends Component {
                             </div>
                         </div>
                         <div className="form-group">
-                            <label className="col-lg-3 control-label">Short description:</label>
+                            <label className="col-lg-3 control-label">Description:</label>
                             <div className="col-lg-8">
-                                <input className="form-control" value={this.state.credentials.description} onChange={this.inputChanged} name="description" type="text" />
+                                <textarea className="form-control" value={this.state.credentials.description} onChange={this.inputChanged} name="description" type="message" />
                             </div>
                         </div>
                         <div className="form-group">
