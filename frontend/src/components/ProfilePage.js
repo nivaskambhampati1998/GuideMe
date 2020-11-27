@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
@@ -119,7 +119,9 @@ class ProfilePage extends Component{
         });
     };
     render(){
-		let rating,profilepic,err;
+		let rating,profilepic,err,updateprofile;
+        const username = this.props.match.params.username;
+        updateprofile = '/update-profile/'+username + '/';
 		profilepic = 'http://localhost:3000'+this.state.user.avatar;
 		if(this.state.user.is_guide===true){
 			rating = (
@@ -169,6 +171,7 @@ class ProfilePage extends Component{
 						<div className="col-md-4">
 							<div className="profile-work">
 								<p>Account Settings</p>
+								<a href=""><NavLink to={updateprofile}>Update profile</NavLink></a><br/>
 								<a href="">Notifications</a><br/>
 								<a onClick={this.handleChangePassword} href="">Change Password</a><br/>
 								<a onClick={this.accountDelete} href="" style={{color:'red'}}>Delete Account</a><br/>

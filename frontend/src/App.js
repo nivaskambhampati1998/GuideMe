@@ -16,6 +16,7 @@ import Place from './components/Place';
 import ProfilePage from './components/ProfilePage';
 import Testimonial from './components/Testimonial';
 import Blogdetails from './components/Blogdetails';
+import UpdateProfile from './components/UpdateProfile';
 
 
 class App extends Component {
@@ -58,13 +59,14 @@ class App extends Component {
 					<Navbar user={this.state.user} setUser={this.setUser} username={username}/>
 					<Switch>
 						<Route exact path='/' component={Home} />
-						<Route exact path='/login' component={() => <Login setUser={this.setUser} />} />
-						<Route exact path='/registerGuide' component={RegisterGuide} />
-						<Route exact path='/registerTourist' component={RegisterTourist} />
-						<Route exact path='/accounts/password-reset/' component={ResetPassword} />
-						<Route exact path='/accounts/password-reset/:uidb64/:token/' component={ResetPasswordConfirm} />
+						<Route path='/login' component={() => <Login setUser={this.setUser} />} />
+						<Route path='/registerGuide' component={RegisterGuide} />
+						<Route path='/registerTourist' component={RegisterTourist} />
+						<Route path='/accounts/password-reset/' component={ResetPassword} />
+						<Route path='/accounts/password-reset/:uidb64/:token/' component={ResetPasswordConfirm} />
 
-						<Route exact path='/profile/:username/' setUser={this.setUser} component={ProfilePage} />
+						<Route path='/profile/:username/' setUser={this.setUser} component={ProfilePage} />
+						<Route path='/update-profile/:username/' setUser={this.setUser} component={UpdateProfile} />
 						<Route path='/blogdetails' component={Blogdetails} />
 						<Route path='/testimonial' component={Testimonial} />
 						<Route path='/contact' component={Contact} />

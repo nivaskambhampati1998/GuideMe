@@ -21,18 +21,6 @@ export class RegisterGuide extends Component {
     }
     else{
       var data = this.state.credentials;
-      // console.log(data,'------------data')
-      // let form_data = new FormData();
-      // form_data.append('username',this.state.credentials.user.username);
-      // form_data.append('email',this.state.credentials.user.email);
-      // form_data.append('first_name',this.state.credentials.user.first_name);
-      // form_data.append('last_name',this.state.credentials.user.last_name);
-      // form_data.append('languages',this.state.credentials.user.languages);
-      // form_data.append('oassword',this.state.credentials.user.oassword);
-      // form_data.append('avatar',this.state.credentials.user.avatar);
-      // form_data.append('user',JSON.stringify(this.state.credentials.user));
-      // form_data.append('places_known',this.state.credentials.places_known);
-      // form_data.append('rating',this.state.credentials.rating);
       
       axios.post('http://localhost:8000/accounts/registerGuide/', data).then(
       res => {
