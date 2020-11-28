@@ -27,8 +27,8 @@ class ProfilePage extends Component{
 			this.props.setUser(null);
 		}
 		finally{
-			<Redirect to={'/'} />
-			window.location.reload();
+			window.location.pathname = '/message';
+			// window.location.reload();
 		}
 	}
 
@@ -49,12 +49,6 @@ class ProfilePage extends Component{
 				}
 			)	
 		}
-		this.errmessage = (
-			<div className="alert alert-danger alert-dismissible" style={{ marginTop:'100px' }}>
-				<button type="button" className="close" data-dismiss="alert">&times;</button>
-				<strong>Check your email for further instructions.</strong>
-			</div>
-		)
 		this.handleLogout();
 	}
 	  
@@ -93,12 +87,6 @@ class ProfilePage extends Component{
                     cls: 'danger'
                 })
             }
-		)
-		this.errmessage = (
-			<div className="alert alert-danger alert-dismissible" style={{ marginTop:'100px' }}>
-				<button type="button" className="close" data-dismiss="alert">&times;</button>
-				<strong>Check your email to reset the password.</strong>
-			</div>
 		)
 		this.handleLogout();
     };

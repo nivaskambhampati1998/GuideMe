@@ -13,7 +13,7 @@ class Post(models.Model):
     place = models.CharField(max_length=250)
     details = models.TextField(null=True)
     review = models.TextField()
-    id = models.IntegerField(unique=True,primary_key=True)
+    id = models.AutoField(primary_key=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='blog_posts')
     
