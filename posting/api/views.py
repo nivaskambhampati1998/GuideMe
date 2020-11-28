@@ -12,7 +12,7 @@ class BlogPostAPIView(mixins.CreateModelMixin,generics.ListAPIView):
 
     lookup_field = 'pk'
     serializer_class = BlogPostSerializer
-    permission_classes = [IsOwnerOrReadOnly,permissions.IsAuthenticated]
+    permission_classes = [IsOwnerOrReadOnly]
 
     #queryset = BlogPost.objects.all()
 
