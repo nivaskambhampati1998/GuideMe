@@ -1,6 +1,42 @@
 import React, { Component } from 'react';
+import * as emailjs from 'emailjs-com';
+import { Button, FromFeedback, Form, FormGroup, Label, Input } from 'reactstrap';
 
-export class Contact extends Component {
+class Contact extends Component {
+state = {
+name: '',
+email: '',
+subject: '',
+message:'',
+}
+handleSubmit(e){
+e.preventDefault()
+const {name, email, subject, message } = this.state
+let templateParams = {
+from_name: email,
+to_name: 'YOUR_EMAIL_ID',
+subject: subject,
+message_html: message,
+}
+emailjs.send(
+'gmail',
+'template_XXXXXXXX',
+'templateparams',
+'user_XXXXXXXXXXXXXXXXXX'
+)
+this.resetForm()
+}
+resetForm() {
+this.setState({
+name: '',
+email: '',
+subject: '',
+message: '',
+})
+}
+handleChange = (param , e) => {
+this.setState({ [param]: e.target.value})
+}
   render() {
     return (
       <div>
@@ -61,31 +97,54 @@ export class Contact extends Component {
               </div>
               <div className="col-md-8">
                 <div className="contact-form">
-                  <form id="contact" action method="post">
+                  <form id="contact" action method="post" onSubmit={this.handleSubmit.bind(this)}>
                     <div className="row">
-                      <div className="col-lg-12 col-md-12 col-sm-12">
-                        <fieldset>
-                          <input name="name" type="text" className="form-control" id="name" placeholder="Full Name" required />
-                        </fieldset>
-                      </div>
-                      <div className="col-lg-12 col-md-12 col-sm-12">
-                        <fieldset>
-                          <input name="email" type="text" className="form-control" id="email" placeholder="E-Mail Address" required />
-                        </fieldset>
-                      </div>
-                      <div className="col-lg-12 col-md-12 col-sm-12">
-                        <fieldset>
-                          <input name="subject" type="text" className="form-control" id="subject" placeholder="Subject" required />
-                        </fieldset>
-                      </div>
+                    <FormGroup className="col-lg-12 col-md-12 col-sm-12"controlId="formBasicName">
+                      <Label className="text-muted">Name</Label>
+                      <Input className="form-control"
+                        type="text"
+                        name="name"
+                        value={this.state.name}
+                        className="text-primary"
+                        onChange={this.handleChange.bind(this, 'name')}
+                        placeholder="Name"
+                      />
+                    </FormGroup>
+                      <FormGroup className="col-lg-12 col-md-12 col-sm-12" controlId="formBasicEmail">
+                      <Label className="text-muted">Email address</Label>
+                      <Input className="form-control"
+                        type="email"
+                        name="email"
+                        value={this.state.email}
+                        className="text-primary"
+                        onChange={this.handleChange.bind(this, 'email')}
+                        placeholder="Enter email"
+                      />
+                    </FormGroup>
+                    <FormGroup className="col-lg-12 col-md-12 col-sm-12" controlId="formBasicSubject">
+                      <Label className="text-muted">Subject</Label>
+                      <Input className="form-control"
+                        type="text"
+                        name="subject"
+                        className="text-primary"
+                        value={this.state.subject}
+                        onChange={this.handleChange.bind(this, 'subject')}
+                        placeholder="Subject"
+                      />
+                    </FormGroup>
+                    <FormGroup className="col-lg-12" controlId="formBasicMessage">
+                      <Label className="text-muted">Message</Label>
+                      <Input className="form-control"
+                        type="textarea"
+                        name="message"
+                        className="text-primary"
+                        value={this.state.message}
+                        onChange={this.handleChange.bind(this, 'message')}
+                      />
+                    </FormGroup>
                       <div className="col-lg-12">
                         <fieldset>
-                          <textarea name="message" rows={6} className="form-control" id="message" placeholder="Your Message" required defaultValue={""} />
-                        </fieldset>
-                      </div>
-                      <div className="col-lg-12">
-                        <fieldset>
-                          <button type="submit" id="form-submit" className="filled-button">Send Message</button>
+                          <Button type="submit" className="filled-button">Send Message</Button>
                         </fieldset>
                       </div>
                     </div>

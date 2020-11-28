@@ -1,4 +1,3 @@
-from django.db import models
 from accounts.models import User, Guide, Tourist
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -13,7 +12,7 @@ class Post(models.Model):
     place = models.CharField(max_length=250)
     details = models.TextField(null=True)
     review = models.TextField()
-    id = models.AutoField(primary_key=True)
+    id = models.IntegerField(unique=True,primary_key=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='blog_posts')
     
@@ -44,3 +43,13 @@ class Review(models.Model):
 
     def __str__(self):
         return self.review
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    subject = models.CharField(max_length=50)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.email
