@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'guide_api',
     'review_api',
     'posting',
+    'contact',
 ]
 
 SITE_ID = 1

@@ -2,6 +2,7 @@ from django.urls import reverse, resolve
 from rest_framework.test import APITestCase
 from blog_api.views import PostList, PostDetail
 from accounts.models import User
+from blog.models import Post, Review
 
 
 class TestBlogUrls(APITestCase):
@@ -85,3 +86,30 @@ class TestBlogViews(APITestCase):
         self.client.post(self.post_list_url, self.post_create_data, format='json')
         response = self.client.get(reverse('blog_api:detail_create', args=[2]))
         self.assertEqual(response.status_code, 404)
+
+class TestBlogModels(APITestCase):
+    def setUp(self):
+        self.place = 'goa'
+        self.details = 'goa is great'
+        self.review = 'goa is best place to enjoy'
+        self.id = 1
+        self.author = self.user
+        self.post = Post.objects.create(
+            place=self.place,
+            details=self.details,
+            review=self.review,
+            id=self.id,
+            author=self.author,
+        ).save()
+        self.guide = 'me'
+        self.rating = 4
+        self.review = 'it is a best experience'
+        self.id = 1
+        self.author = self.user
+        self.review = Review.objects.create(
+            guide=self.guide,
+            rating=self.rating,
+            review=self.review,
+            id=self.id,
+            author=self.author
+        ).save()
