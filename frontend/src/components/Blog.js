@@ -8,7 +8,8 @@ class Blog extends Component {
   constructor(props){
     super(props)
     this.state = {
-      data: []
+      data: [],
+      serach:null
     }
   }
   componentDidMount = () => {
@@ -23,10 +24,36 @@ class Blog extends Component {
           }
         )	
   }
+  searchSpace=(event)=>{
+    let keyword = event.target.value;
+    this.setState({search:keyword})
+  }
   
 
   render() {
-    console.log(this.state.data)
+    const items = this.state.data.filter((d)=>{
+      if(this.state.search == null)
+          return d
+      else if(d.title.toLowerCase().includes(this.state.search.toLowerCase())){
+          return d
+      }
+    }).map(d=>{
+      return(
+        <div className="col-lg-11 col-md-11 col-sm-11">
+          <div className="box" style={{ margin: '10px',width:'100%' }}>
+            <div className="service-item">
+              <NavLink to={{pathname:'/blogdetails/'+d.pk,state:{details:d}}} className="services-item-image">
+                <div className="down-content">
+                  <h4><NavLink to={{pathname:'/blogdetails/'+d.pk,blogstate:{details:d}}}>{d.title}</NavLink></h4>
+                  <p style={{ margin: 0 }}>  {d.content.substring(0,99)} &nbsp;...&nbsp;&nbsp;</p>
+                  <p>|&nbsp;&nbsp; {d.timestamp.substring(0,10)} &nbsp; {d.timestamp.substring(11,19)}&nbsp;</p>
+                </div>
+              </NavLink>
+            </div>
+          </div>
+        </div>
+      )
+    })
     return (
       <div>
         {/* ***** Preloader Start ***** */}
@@ -51,24 +78,11 @@ class Blog extends Component {
             <div className="row">
               <div className="col-md-8">
                 <div className="row">
-                  { this.state.data.map(d=>(
-                  <div className="col-md-5 col-sm-11">
-                    <div className="box" style={{ margin: '10px' }}>
-                      <div className="service-item">
-                        <NavLink to={{pathname:'/blogdetails/'+d.pk,state:{details:d}}} className="services-item-image"><img src="assets/images/blog-3-370x270.jpg" className="img-fluid" alt="" /></NavLink>
-                        <div className="down-content">
-                          <h4><NavLink to={{pathname:'/blogdetails/'+d.pk,blogstate:{details:d}}}>{d.title}</NavLink></h4>
-                  <p style={{ margin: 0 }}>  {d.content.substring(0,99)} &nbsp;...&nbsp;&nbsp;</p>
-                  <p>|&nbsp;&nbsp; {d.timestamp.substring(0,10)} &nbsp; {d.timestamp.substring(11,19)}&nbsp;</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  ))}
+                  {items}
                   <div className="col-md-12">
                     <ul className="pages">
-                      <li><a href="#">1</a></li>
-                      <li className="active"><a href="#">2</a></li>
+                      <li className="active"><a href="#">1</a></li>
+                      <li><a href="#">2</a></li>
                       <li><a href="#">3</a></li>
                       <li><a href="#">4</a></li>
                       <li><i className="fa fa-angle-double-right"></i></li>
@@ -83,10 +97,7 @@ class Blog extends Component {
                   </div>
                   <div className="row">
                     <div className="col-8">
-                      <input type="text" className="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2" />
-                    </div>
-                    <div className="col-4">
-                      <button className="filled-button" type="button">Go</button>
+                      <input type="text" placeholder="Search Keywords" onChange={(e)=>this.searchSpace(e)} style={{ border:'none',backgroundColor:'#f33f3f99',color:'white',padding: '12px 20px',margin: '8px 0',boxSizing: 'border-box',borderRadius:'5%' }} />
                     </div>
                   </div>
                 </div>
