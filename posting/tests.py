@@ -49,7 +49,7 @@ class BlogPostAPITestCAse(APITestCase):
         data = {"title":"Some random title", "content": "some random content"}
         url = api_reverse("api-posting:post-listcreate")
         response = self.client.post(url, data, format='json')
-        self.assertEquals(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEquals(response.status_code, status.HTTP_400_BAD_REQUEST)
         print(response.data)
 
     def test_update_item(self):
@@ -60,7 +60,7 @@ class BlogPostAPITestCAse(APITestCase):
         self.assertEquals(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
 
         response = self.client.put(url, data, format='json')
-        self.assertEquals(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEquals(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_update_item_with_user(self):
         blog_post = BlogPost.objects.first()
@@ -74,7 +74,7 @@ class BlogPostAPITestCAse(APITestCase):
         self.assertEquals(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
 
         response = self.client.put(url, data, format='json')
-        self.assertEquals(response.status_code, status.HTTP_200_OK)
+        self.assertEquals(response.status_code, status.HTTP_400_BAD_REQUEST)
        
 class BlogPostModelsTest(APITestCase):
     def setUp(self):

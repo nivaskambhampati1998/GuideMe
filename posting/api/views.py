@@ -12,7 +12,6 @@ class BlogPostAPIView(mixins.CreateModelMixin,generics.ListAPIView):
 
     lookup_field = 'pk'
     serializer_class = BlogPostSerializer
-    permission_classes = [IsOwnerOrReadOnly]
 
     #queryset = BlogPost.objects.all()
 
@@ -25,8 +24,7 @@ class BlogPostAPIView(mixins.CreateModelMixin,generics.ListAPIView):
         return qs
 
     def perform_create(self, serializer):
-        if self.request.user.is_guide:
-            serializer.save(user=self.request.user)
+        serializer.save(user=self.request.user)
 
     def post(self, request, *args, **kwargs):
         print(request.data)
