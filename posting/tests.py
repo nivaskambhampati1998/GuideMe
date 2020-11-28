@@ -75,3 +75,20 @@ class BlogPostAPITestCAse(APITestCase):
 
         response = self.client.put(url, data, format='json')
         self.assertEquals(response.status_code, status.HTTP_200_OK)
+       
+class BlogPostModelsTest(APITestCase):
+    def setUp(self):
+        self.user="guideme"
+        self.title="guideme"
+        self.city="SriCity"
+        self.content="Hello Tourist peoples"
+        self.timestamp="2020-12-5"  
+        
+        self.blogpost = BlogPost.objects.create_user(
+            user=self.user,
+            title=self.title,
+            city=self.city,
+            content=self.content,
+            timestamp=self.timestamp
+        )
+        self.blogpost.save()
