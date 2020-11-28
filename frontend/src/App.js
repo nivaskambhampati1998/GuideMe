@@ -69,7 +69,7 @@ class App extends Component {
 
 						<Route path='/profile/:username/' setUser={this.setUser} component={ProfilePage} />
 						<Route path='/update-profile/:username/' setUser={this.setUser} component={UpdateProfile} />
-						<Route path='/blogdetails' component={Blogdetails} />
+						<Route path='/blogdetails/:pk' component={Blogdetails} />
 						<Route path='/testimonial' component={Testimonial} />
 						<Route path='/message' component={DisplayMessage} />
 						<Route path='/contact' component={Contact} />

@@ -18,7 +18,6 @@ class BlogPostSerializer(serializers.ModelSerializer):
            'content',
            'timestamp',
         ]
-        read_only_fields = ['user']
 
     def get_url(self, obj):
         print(obj,"---------------------------------------------------")

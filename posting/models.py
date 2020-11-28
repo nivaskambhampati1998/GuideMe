@@ -14,11 +14,6 @@ class BlogPost(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.user.username)
-
-    @property
-    def owner(self):
-        self.user
-
+        return str(self.title)
     def get_api_url(self, request=None):
         return api_reverse("api-posting:post-rud", kwargs={'pk': self.pk}, request=request)

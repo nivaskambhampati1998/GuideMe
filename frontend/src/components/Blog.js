@@ -26,6 +26,7 @@ class Blog extends Component {
   
 
   render() {
+    console.log(this.state.data)
     return (
       <div>
         {/* ***** Preloader Start ***** */}
@@ -54,9 +55,9 @@ class Blog extends Component {
                   <div className="col-md-5 col-sm-11">
                     <div className="box" style={{ margin: '10px' }}>
                       <div className="service-item">
-                        <NavLink to='/blogdetails' className="services-item-image"><img src="assets/images/blog-3-370x270.jpg" className="img-fluid" alt="" /></NavLink>
+                        <NavLink to={{pathname:'/blogdetails/'+d.pk,state:{details:d}}} className="services-item-image"><img src="assets/images/blog-3-370x270.jpg" className="img-fluid" alt="" /></NavLink>
                         <div className="down-content">
-                          <h4><NavLink to='/blogdetails'>{d.title}</NavLink></h4>
+                          <h4><NavLink to={{pathname:'/blogdetails/'+d.pk,blogstate:{details:d}}}>{d.title}</NavLink></h4>
                   <p style={{ margin: 0 }}>  {d.content.substring(0,99)} &nbsp;...&nbsp;&nbsp;</p>
                   <p>|&nbsp;&nbsp; {d.timestamp.substring(0,10)} &nbsp; {d.timestamp.substring(11,19)}&nbsp;</p>
                         </div>
