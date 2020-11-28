@@ -1,7 +1,31 @@
 import React, { Component } from 'react'
+import axios from 'axios';
 
-export class Blogdetails extends Component {
+
+class Blogdetails extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+          data: []
+        }
+      }
+    componentDidMount = () => {
+      
+        axios.get('http://localhost:8000/posting/'+this.props.match.params.pk).then(
+          res => {
+              console.log(res.data,"...........................----------------")
+            var data = res.data
+            this.setState({data : data})
+            console.log(this.state.data)
+          },
+          err => {
+            console.log(err)
+          }
+        )	
+    }
+
     render() {
+        console.log(this.state,"11111111.................  ")
         return (
             <div>
                 {/* Page Content */}
@@ -22,29 +46,13 @@ export class Blogdetails extends Component {
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="section-heading">
-                                    <h2>Lorem ipsum dolor sit amet, consectetur.</h2>
+        <h2>{this.state.data.title}</h2>
                                 </div>
                             </div>
                             <div className="col-md-8">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, sed. Ex, id autem cum assumenda, quisquam cupiditate amet dolorem atque ipsam pariatur sequi voluptatem est nesciunt eum, aspernatur, tenetur rem. <br />
-                                    <br /> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, consequatur, magnam. Dolorum vitae a vel quisquam. Fuga quia suscipit id veritatis sint earum impedit corporis quidem eum consectetur ipsam ex sequi ad,
-            distinctio enim tenetur eveniet eligendi. Laborum, sapiente, magnam.</p>
-                                <br />
-                                <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, modi.</h5>
-                                <br />
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam officia in adipisci. Corporis rem beatae cupiditate neque consequuntur necessitatibus expedita laudantium temporibus quam ex quidem, aut non blanditiis soluta deserunt
-            dolores mollitia repudiandae voluptatibus perspiciatis dolor quos distinctio! Atque, magnam. <br />
-                                    <br /> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt dolore ducimus, ad itaque reprehenderit repellat dignissimos, qui velit dolores voluptas.</p>
+        <p>{this.state.data.content}</p>
                             </div>
-                            <div className="col-md-4">
-                                <div className="left-content">
-                                    <h4>Lorem ipsum dolor sit amet.</h4>
-                                    <br />
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br /><br />Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate
-              corrupti.</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, minus?</p>
-                                </div>
-                            </div>
+                            
                         </div>
                         <br />
                         <div>
