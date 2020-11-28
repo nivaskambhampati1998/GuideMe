@@ -18,7 +18,7 @@ class MonumentsModelsTest(APITestCase):
         self.description="abcdh"
         self.image="img.png"
         
-        self.user = User.objects.create_user(
+        self.monument = Monument.objects.create_user(
             monument_id=self.monument_id,
             monument_name=self.monument_name,
             city=self.city,
