@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate
 from accounts.models import User, Guide, Tourist
 from monuments.models import  Monument
-from blog.models import Post, Review
+from blog.models import Post, Review, Contact
 from posting.models import BlogPost
 from rest_framework.reverse import reverse as api_reverse
 from rest_framework import status
