@@ -84,7 +84,7 @@ class BlogPostModelsTest(APITestCase):
         self.content="Hello Tourist peoples"
         self.timestamp="2020-12-5"  
         
-        self.blogpost = BlogPost.objects.create_user(
+        self.blogpost = BlogPost.objects.create(
             user=self.user,
             title=self.title,
             city=self.city,
