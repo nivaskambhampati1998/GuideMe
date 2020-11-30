@@ -28,6 +28,7 @@ urlpatterns = [
     path('reviewOnGuides/',include('review_api.urls',namespace='reviewOnGuides')),
     path('guides/',include('guide_api.urls',namespace='guides')),
     path('contact/',include('contact.urls')),
+    path('booking/',include('booking.urls')),
 ]
 
 if settings.DEBUG:

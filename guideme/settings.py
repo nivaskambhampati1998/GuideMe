@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'review_api',
     'posting',
     'contact',
+    'booking',
 ]
 
 SITE_ID = 1
