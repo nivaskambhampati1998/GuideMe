@@ -55,9 +55,9 @@ class PlaceDetail extends Component {
                         </div>
                     </div>
                 </div>
-                {this.formatCards()}
+                <div className="col-md-12" style={{minWidth:'100%', marginLeft:'22%',marginTop:'20px'}}>{this.formatCards()}</div>
                 <br/>
-                <div className="products">
+                <div className="products" style={{marginTop:'300px'}}>
                     <div className="container">
                         <div className="row">
                             <div className='col-md-4'>

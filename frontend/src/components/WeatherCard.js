@@ -10,7 +10,7 @@ class WeatherCard extends React.Component {
     const imgURL = "owf owf-"+ this.props.day.weather[0].id +" owf-5x red"
 
     return (
-      <div style={{width:'150px',float:'left'}}>
+      <div style={{width:'150px',float:'left',margin:'10px'}}>
         <div className="card">
           <h5 className="">{this.props.day.dt_txt.slice(8,10)}/{this.props.day.dt_txt.slice(5,7)}/{this.props.day.dt_txt.slice(0,4)}</h5>
           <i className={imgURL}></i>
