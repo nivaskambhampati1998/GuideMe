@@ -23,7 +23,9 @@ class BookingsList(APIView):
             for i in data:
                 count=0
                 for j in tempdata:
-                    if j.guidename==i.guidename:
+                    # print(type(i.guidename),type(j.guidename.guidename))
+                    if j.guidename.guidename==i.guidename:
+                        # print(1)
                         count+=1
                 if count==0:
                     newdata.append(i)
