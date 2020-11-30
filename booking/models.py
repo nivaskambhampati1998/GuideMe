@@ -14,4 +14,4 @@ class Bookings(models.Model):
     booking_status = models.CharField(max_length=1,choices=Status_Choices)
 
     def __str__(self):
-        return self.guide_id+'_'+self.user_id
+        return self.guidename.guidename+'_'+self.username.touristname
