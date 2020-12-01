@@ -1,6 +1,7 @@
 from rest_framework.test import APITestCase
 from django.contrib.auth import get_user_model
 from posting.models import BlogPost
+from blog.models import Post, Review, Contact
 from rest_framework.reverse import reverse as api_reverse
 from rest_framework import status
 from rest_framework_jwt.settings import api_settings
@@ -84,7 +85,7 @@ class BlogPostModelsTest(APITestCase):
         self.content="Hello Tourist peoples"
         self.timestamp="2020-12-5"  
         
-        self.blogpost = BlogPost.objects.create_user(
+        self.blogpost = BlogPost.objects.create(
             user=self.user,
             title=self.title,
             city=self.city,
