@@ -6,8 +6,9 @@ class BookingsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bookings
         fields = ('guidename','username','booking_date','booking_status')
+    
 
 class BookingsSerializerGuide(serializers.ModelSerializer):
     class Meta:
         model = Guide
-        fields = ('user','guidename','rating')
+        fields = ('user','guidename','rating','amount')

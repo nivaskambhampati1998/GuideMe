@@ -43,6 +43,7 @@ class Guide(models.Model):
     guidename = models.CharField(max_length=50,blank=True)
     places_known = models.CharField(max_length=250,blank = False)
     rating = models.IntegerField(default=0)
+    amount = models.IntegerField(default=0)
 
     def save(self,*args,**kwargs):
         self.guidename = self.user.username

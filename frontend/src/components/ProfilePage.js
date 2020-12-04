@@ -117,12 +117,15 @@ class ProfilePage extends Component{
 			)
 		}
 		if(this.state.user.username === null){
-			err = (
-				<div className="alert alert-danger alert-dismissible" style={{ marginTop:'100px' }}>
-					<button type="button" className="close" data-dismiss="alert">&times;</button>
-					<strong>Please authenticate or invalid user details.</strong>
-				</div>
-			)
+			return (
+                <div>
+                    <div className="container jumbotron" style={{marginTop:'100px',marginBottom:'4%',textAlign:'center',backgroundColor: 'lightcoral'}}>
+                        <h4>Please login to continue.</h4>
+                        <br />
+                        <p>Having trouble? <Link to={'/contact'}><a href="">Contact us</a></Link></p>
+                    </div>
+                </div>
+            )
 		}
         return(
             <div>

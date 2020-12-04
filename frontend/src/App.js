@@ -9,6 +9,7 @@ import RegisterTourist from './components/RegisterTourist';
 import ResetPassword from './components/ResetPassword';
 import ResetPasswordConfirm from './components/ResetPasswordConfirm';
 import Navbar from './components/Navbar';
+import CheckOut from './components/CheckOut';
 
 import Contact from './components/Contact';
 import Blog from './components/Blog';
@@ -20,6 +21,8 @@ import PlaceDetail from './components/PlaceDetail';
 import UpdateProfile from './components/UpdateProfile';
 import DisplayMessage from './components/DisplayMessage';
 import PostMonument from './components/PostMonument';
+import './App.css';
+
 
 
 class App extends Component {
@@ -79,6 +82,7 @@ class App extends Component {
 						<Route path='/message' component={DisplayMessage} />
 						<Route path='/contact' component={Contact} />
 						<Route path='/login' component={Login} />
+						<Route path='/checkout' component={CheckOut} />
 					</Switch>
 				</Router>
 			</div>

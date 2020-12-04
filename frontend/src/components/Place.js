@@ -40,9 +40,9 @@ export class Place extends Component {
       }
     }).map(d=>{
       return (
-        <div className="col-md-5 col-sm-11">
+        <div className="col-md-5 col-sm-11" style={{minHeight:'400px'}}>
           <NavLink to={{pathname:'/placedetails/'+d.monument_id,state:{details:d}}} className="services-item-image">
-            <div className="box" style={{ margin: '10px' }}>
+            <div className="box">
               <div className="service-item">
                 <img src={"http://localhost:3000"+d.image} className="img-fluid" alt="" />
                 <div className="down-content">
@@ -80,29 +80,17 @@ export class Place extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-8">
-                <div className="row">
-                  {items}
-                  <div className="col-md-12">
-                    <ul className="pages">
-                      <li className="active"><a href="#">1</a></li>
-                      <li><a href="#">2</a></li>
-                      <li><a href="#">3</a></li>
-                      <li><a href="#">4</a></li>
-                      <li><i className="fa fa-angle-double-right"></i></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <div className="contact-form">
-                  <div className="form-group">
-                    <h5>Place Search</h5>
-                  </div>
-                  <div className="row">
-                    <div className="col-8">
-                      <input type="text" placeholder="Search Keywords" onChange={(e)=>this.searchSpace(e)} style={{ border:'none',backgroundColor:'#f33f3f99',color:'white',padding: '12px 20px',margin: '8px 0',boxSizing: 'border-box',borderRadius:'5%' }} />
+                <div className="col-md-2 float-right">
+                  <div className="contact-form">
+                    <div className="row">
+                      <div className="col-5">
+                        <input type="text" placeholder="Search city/place" onChange={(e)=>this.searchSpace(e)} style={{ border:'none',backgroundColor:'#f33f3f99',color:'white',padding: '12px 20px',margin: '8px 0',boxSizing: 'border-box',borderRadius:'5%' }} />
+                      </div>
                     </div>
                   </div>
+                </div>
+                <div className="row">
+                  {items}
                 </div>
               </div>
             </div>

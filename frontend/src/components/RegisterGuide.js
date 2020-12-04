@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export class RegisterGuide extends Component {
   state = {
-    credentials: { user: { username: '', email: '', first_name: '', last_name: '', languages: '', password: '' }, places_known: '', rating: 0 },
+    credentials: { user: { username: '', email: '', first_name: '', last_name: '', languages: '', password: '' }, places_known: '', rating: 0, amount:null },
     password1:'',
     message: '',
     registered: false,
@@ -49,6 +49,9 @@ export class RegisterGuide extends Component {
           else if (err.response && err.response && err.response.data.places_known) {
             message1 = "Locations known field cannot be blank"
           }
+          else if (err.response && err.response && err.response.data.amount) {
+            message1 = "Amount field cannot be blank"
+          }
           else if (err.response && err.response && err.response.data.error) {
             message1 = err.response.data.error
           }
@@ -76,7 +79,7 @@ export class RegisterGuide extends Component {
   inputChanged = event => {
     const cred = this.state.credentials;
     const pass1 = this.state;
-    if (event.target.name === 'places_known') {
+    if (event.target.name === 'places_known' || event.target.name === 'amount') {
       cred[event.target.name] = event.target.value;
       this.setState({ credentials: cred });
     }
@@ -170,6 +173,13 @@ export class RegisterGuide extends Component {
                     <div className="wrap-input100 validate-input" data-validate="Enter mail">
                       <input className="input100" type="mail" name="email" placeholder="Mail ID" 
                       value={this.state.credentials.email} 
+                      onChange={this.inputChanged}/>
+                      <span className="focus-input100" data-placeholder="" />
+                    </div>
+
+                    <div className="wrap-input100 validate-input" data-validate="Enter amount">
+                      <input className="input100" type="number" name="amount" placeholder="Amount in rupees per day" 
+                      value={this.state.credentials.amount} 
                       onChange={this.inputChanged}/>
                       <span className="focus-input100" data-placeholder="" />
                     </div>

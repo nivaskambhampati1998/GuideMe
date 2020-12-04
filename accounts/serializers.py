@@ -38,7 +38,7 @@ class RegisterGuideSerializer(serializers.ModelSerializer):
     user = UserSerializer()
     class Meta:
         model = Guide
-        fields = ['user','rating','places_known']
+        fields = ['user','rating','places_known','amount']
     
     def create(self, validated_data):
         user_data = validated_data.pop('user')
