@@ -53,17 +53,17 @@ class ReviewModelsTest(APITestCase):
         self.review.save()
 
         
- class ContactModelsTest(APITestCase):
-    def setUp(self):
-        self.name="guideme"
-        self.email="guideme@gmail.com"
-        self.subject="Hello Tourist peoples"
-        self.message="Hello Guideme"
+#  class ContactModelsTest(APITestCase):
+#     def setUp(self):
+#         self.name="guideme"
+#         self.email="guideme@gmail.com"
+#         self.subject="Hello Tourist peoples"
+#         self.message="Hello Guideme"
 
-        self.contact = Contact.objects.create(
-            name=self.name,
-            email=self.email,
-            subject=self.subject,
-            message=self.message
-        )
-        self.contact.save()
+#         self.contact = Contact.objects.create(
+#             name=self.name,
+#             email=self.email,
+#             subject=self.subject,
+#             message=self.message
+#         )
+#         self.contact.save()
