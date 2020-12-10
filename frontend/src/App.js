@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './bootstrap.min.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 
@@ -22,6 +23,13 @@ import UpdateProfile from './components/UpdateProfile';
 import DisplayMessage from './components/DisplayMessage';
 import PostMonument from './components/PostMonument';
 import './App.css';
+
+import List from './components/List';
+import Add from './components/Add';
+import Update from './components/Update';
+import List_2 from './components/List_2';
+import Add_2 from './components/Add_2';
+import Update_2 from './components/Update_2';
 
 
 
@@ -83,6 +91,14 @@ class App extends Component {
 						<Route path='/contact' component={Contact} />
 						<Route path='/login' component={Login} />
 						<Route path='/checkout' component={CheckOut} />
+						<div className="container">
+							<Route path="/reviewOnPlaces" component={List} exact />
+							<Route path="/reviewOnPlaces/add" component={Add} />
+							<Route path="/reviewOnPlaces/update/:id" component={Update} />
+							<Route path="/reviewOnGuides" component={List_2} exact />
+							<Route path="/reviewOnGuides/add" component={Add_2} />
+							<Route path="/reviewOnGuides/update/:id" component={Update_2} />
+						</div>
 					</Switch>
 				</Router>
 			</div>
