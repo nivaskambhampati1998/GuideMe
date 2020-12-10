@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './bootstrap.min.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 
@@ -22,6 +23,13 @@ import UpdateProfile from './components/UpdateProfile';
 import DisplayMessage from './components/DisplayMessage';
 import PostMonument from './components/PostMonument';
 import './App.css';
+
+import ReviewsOnPlaces from './components/ReviewsOnPlaces';
+import AddReviewOnPlaces from './components/AddReviewsOnPlaces';
+import UpdateReviewOnPlaces from './components/UpdateReviewOnPlaces';
+import ReviewsOnGuides from './components/ReviewsOnGuides';
+import AddReviewsOnGuides from './components/AddReviewsOnGuides';
+import UpdateReviewsOnGuides from './components/UpdateReviewsOnGuides';
 
 
 
@@ -83,6 +91,14 @@ class App extends Component {
 						<Route path='/contact' component={Contact} />
 						<Route path='/login' component={Login} />
 						<Route path='/checkout' component={CheckOut} />
+						<div className="container">
+							<Route path="/reviewOnPlaces" component={ReviewsOnPlaces} exact />
+							<Route path="/reviewOnPlaces/add" component={AddReviewOnPlaces} />
+							<Route path="/reviewOnPlaces/update/:id" component={UpdateReviewOnPlaces} />
+							<Route path="/reviewOnGuides" component={ReviewsOnGuides} exact />
+							<Route path="/reviewOnGuides/add" component={AddReviewsOnGuides} />
+							<Route path="/reviewOnGuides/update/:id" component={UpdateReviewsOnGuides} />
+						</div>
 					</Switch>
 				</Router>
 			</div>
