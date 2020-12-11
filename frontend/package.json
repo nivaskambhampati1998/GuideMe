@@ -10,14 +10,19 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.21.0",
     "emailjs-com": "^2.6.4",
+    "node-modules": "^1.0.1",
     "react": "^16.14.0",
     "react-alert": "^7.0.2",
     "react-dom": "^16.14.0",
+    "react-native-uber-rides": "^0.4.3",
+    "react-native-uber-rides-estimates": "^0.1.0",
     "react-notify-toast": "^0.5.1",
+    "react-quill": "^1.3.5",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.0",
     "react-stripe-elements": "^6.1.2",
-    "reactstrap": "^8.7.1"
+    "reactstrap": "^8.7.1",
+    "shards-react": "^1.0.3"
   },
   "scripts": {
     "start": "react-scripts start",

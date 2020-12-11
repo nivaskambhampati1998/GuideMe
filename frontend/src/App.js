@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './bootstrap.min.css';
+// import './css/blogpage.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
-
 import Home from './components/Home';
 import Login from './components/Login';
 import RegisterGuide from './components/RegisterGuide';
@@ -14,6 +14,7 @@ import CheckOut from './components/CheckOut';
 
 import Contact from './components/Contact';
 import Blog from './components/Blog';
+import Blogwriting from './components/BlogWriting';
 import Place from './components/Place';
 import ProfilePage from './components/ProfilePage';
 import Testimonial from './components/Testimonial';
@@ -30,6 +31,7 @@ import UpdateReviewOnPlaces from './components/UpdateReviewOnPlaces';
 import ReviewsOnGuides from './components/ReviewsOnGuides';
 import AddReviewsOnGuides from './components/AddReviewsOnGuides';
 import UpdateReviewsOnGuides from './components/UpdateReviewsOnGuides';
+import BlogWriting from './components/BlogWriting';
 
 
 
@@ -82,6 +84,7 @@ class App extends Component {
 						<Route path='/profile/:username/' setUser={this.setUser} component={ProfilePage} />
 						<Route path='/update-profile/:username/' setUser={this.setUser} component={UpdateProfile} />
 						<Route path='/blog' component={Blog} />
+						<Route path='/blogWriting' component={BlogWriting} />
 						<Route path='/blogdetails/:pk' component={Blogdetails} />
 						<Route path='/place' component={Place} />
 						<Route path='/placedetails/:monument_id' component={PlaceDetail} />

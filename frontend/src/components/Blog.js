@@ -68,6 +68,7 @@ class Blog extends Component {
                 <div className="text-content">
                   <h4>Lorem epsum nnnn</h4>
                   <h2>Blog</h2>
+                  <NavLink to={{pathname:'/BlogWriting/'}}><button style={{border:'2px blue',borderRadius:'10px',padding:'10px',paddingLeft:'20px',paddingRight:'20px',color:'white',fontWeight:'bold',backgroundColor:'blue'}}>Write a blog</button></NavLink>
                 </div>
               </div>
             </div>
