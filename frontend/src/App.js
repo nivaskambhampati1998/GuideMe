@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './bootstrap.min.css';
-// import './css/blogpage.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import Home from './components/Home';
