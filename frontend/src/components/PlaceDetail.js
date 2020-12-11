@@ -95,7 +95,6 @@ class PlaceDetail extends Component {
                     <form onSubmit={this.Submitted}>
                         <h5>Date Availability</h5>
                         <input type='text' placeholder="Date in yyyy-mm-dd" style={{width:'89px',border:'#f33f3f'}} onChange={this.inputChanged} value={this.state.date} autoFocus/>
-                        <input type='submit' value='->'/>
                     </form>
                 </div>
             )

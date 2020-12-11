@@ -58,17 +58,16 @@ from django.db import models
 from accounts.models import User, Guide, Tourist
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from monuments.models import Monument
 
 # reviews by users on places
 class Post(models.Model):
 
-    place = models.CharField(max_length=250)
+    place = models.ForeignKey(Monument,on_delete=models.CASCADE)
     details = models.TextField(null=True)
     review = models.TextField()
     id = models.AutoField(primary_key=True)
-    author = models.ForeignKey(
-        User, on_delete=models.CASCADE)
-    
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
   
     def _str_(self):
         return self.place
