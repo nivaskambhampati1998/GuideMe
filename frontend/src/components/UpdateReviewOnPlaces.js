@@ -1,5 +1,5 @@
 import React from 'react';
-class Update extends React.Component{
+class UpdateReviewOnPlaces extends React.Component{
     constructor(){
         super();
         this.state={
@@ -90,4 +90,4 @@ class Update extends React.Component{
     }
 }
 
-export default Update;
+export default UpdateReviewOnPlaces;

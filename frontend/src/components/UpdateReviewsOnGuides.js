@@ -1,12 +1,12 @@
 import React from 'react';
-class Add extends React.Component{
+class UpdateReviewsOnGuides extends React.Component{
     constructor(){
         super();
         this.state={
             author:'',
-            place:'',
-            details:'',
-            review:''
+            guide:'',
+            review:'',
+            rating:''
         }
         this.changeHandler=this.changeHandler.bind(this);
         this.submitForm=this.submitForm.bind(this);
@@ -21,8 +21,9 @@ class Add extends React.Component{
 
     // Submit Form
     submitForm(){
-        fetch('http://127.0.0.1:8000/reviewOnPlaces/',{
-            method:'POST',
+        var id=this.props.match.params.id;
+        fetch('http://127.0.0.1:8000/reviewOnGuides/'+id+'/',{
+            method:'PUT',
             body:JSON.stringify(this.state),
             headers:{
                 'Content-type': 'application/json; charset=UTF-8',
@@ -30,42 +31,52 @@ class Add extends React.Component{
         })
         .then(response=>response.json())
         .then((data)=>console.log(data));
+    }
 
-        this.setState({
-            author:'',
-            place:'',
-            details:'',
-            review:''
-       
+    fetchData(){
+        var id=this.props.match.params.id;
+        fetch('http://127.0.0.1:8000/reviewOnGuides/'+id)
+        .then(response=>response.json())
+        .then((data)=>{
+            this.setState({
+                author:data.author,
+                guide:data.guide,
+                review:data.review,
+                rating:data.rating
+            });
         });
     }
-    
+
+    componentDidMount(){
+        this.fetchData();
+    }
+
     render(){
         return (
             <table className="table table-bordered" style={{marginTop:'100px'}}>
                 <tbody>
-                    <tr>
+                    {/* <tr>
                         <th>Tourist</th>
                         <td>
-                            <input value={this.state.author} name="author" onChange={this.changeHandler} type="number" className="form-control" />
+                            <input value={this.state.author} name="author" onChange={this.changeHandler} type="text" className="form-control" />
                         </td>
-                    </tr>
+                    </tr> */}
                     <tr>
-                        <th>Place</th>
+                        <th>Guide</th>
                         <td>
-                            <input value={this.state.place} name="place" onChange={this.changeHandler} type="text" className="form-control" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Details</th>
-                        <td>
-                            <input value={this.state.details} name="details" onChange={this.changeHandler} type="text" className="form-control" />
+                            <input value={this.state.guide} name="guide" onChange={this.changeHandler} type="text" className="form-control" />
                         </td>
                     </tr>
                     <tr>
                         <th>Review</th>
                         <td>
                             <input value={this.state.review} name="review" onChange={this.changeHandler} type="text" className="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Rating</th>
+                        <td>
+                            <input value={this.state.rating} name="rating" onChange={this.changeHandler} type="number" className="form-control" />
                         </td>
                     </tr>
                     <tr>
@@ -79,4 +90,4 @@ class Add extends React.Component{
     }
 }
 
-export default Add;
+export default UpdateReviewsOnGuides;

@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+ALLOW_PARALLEL_RUNS = True
+
+CRON_CLASSES = [
+    "guideme.cron.MyCronJob",
+]
 
 # Application definition
 
@@ -42,6 +47,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'django.contrib.sites',
     'django_cleanup.apps.CleanupConfig',        # to clean the user profile photo and update new photo
+    'django_cron',
     'accounts',
     'monuments',
     'blog',

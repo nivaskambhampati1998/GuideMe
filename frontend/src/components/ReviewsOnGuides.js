@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class List extends React.Component{
+class ReviewsOnGuides extends React.Component{
     constructor(){
         super();
         this.state={
@@ -10,7 +10,7 @@ class List extends React.Component{
     }
 
     fetchData(){
-        fetch('http://127.0.0.1:8000/reviewOnPlaces/')
+        fetch('http://127.0.0.1:8000/reviewOnGuides/')
         .then(response=>response.json())
         .then((data)=>{
             this.setState({
@@ -24,7 +24,7 @@ class List extends React.Component{
     }
 
     deleteData(id){
-        fetch('http://127.0.0.1:8000/reviewOnPlaces/'+id+'/',{
+        fetch('http://127.0.0.1:8000/reviewOnGuides/'+id+'/',{
             method:'DELETE',
             body:JSON.stringify(this.state),
         })
@@ -41,11 +41,11 @@ class List extends React.Component{
         const rows=reviewData.map((review)=>
             <tr key={review.id}>
                 <td>{review.author}</td>
-                <td>{review.place}</td>
-                <td>{review.details}</td>
+                <td>{review.guide}</td>
                 <td>{review.review}</td>
+                <td>{review.rating}</td>
                 <td>
-                    <Link to={'reviewOnPlaces/update/'+review.id} className="btn btn-info mr-2">Update</Link>
+                    <Link to={'reviewOnGuides/update/'+review.id} className="btn btn-info mr-2">Update</Link>
                     <button onClick={()=>this.deleteData(review.id)} className="btn btn-danger">Delete</button>
                 </td>
             </tr>
@@ -55,9 +55,9 @@ class List extends React.Component{
                 <thead>
                     <tr>
                         <th>Tourist</th>
-                        <th>Place</th>
-                        <th>Details</th>
+                        <th>Guide</th>
                         <th>Review</th>
+                        <th>Rating</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -70,4 +70,4 @@ class List extends React.Component{
     
 }
 
-export default List;
+export default ReviewsOnGuides;

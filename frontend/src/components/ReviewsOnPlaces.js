@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class List_2 extends React.Component{
+class ReviewsOnPlaces extends React.Component{
     constructor(){
         super();
         this.state={
@@ -10,7 +10,7 @@ class List_2 extends React.Component{
     }
 
     fetchData(){
-        fetch('http://127.0.0.1:8000/reviewOnGuides/')
+        fetch('http://127.0.0.1:8000/reviewOnPlaces/')
         .then(response=>response.json())
         .then((data)=>{
             this.setState({
@@ -24,7 +24,7 @@ class List_2 extends React.Component{
     }
 
     deleteData(id){
-        fetch('http://127.0.0.1:8000/reviewOnGuides/'+id+'/',{
+        fetch('http://127.0.0.1:8000/reviewOnPlaces/'+id+'/',{
             method:'DELETE',
             body:JSON.stringify(this.state),
         })
@@ -41,11 +41,11 @@ class List_2 extends React.Component{
         const rows=reviewData.map((review)=>
             <tr key={review.id}>
                 <td>{review.author}</td>
-                <td>{review.guide}</td>
+                <td>{review.place}</td>
+                <td>{review.details}</td>
                 <td>{review.review}</td>
-                <td>{review.rating}</td>
                 <td>
-                    <Link to={'reviewOnGuides/update/'+review.id} className="btn btn-info mr-2">Update</Link>
+                    <Link to={'reviewOnPlaces/update/'+review.id} className="btn btn-info mr-2">Update</Link>
                     <button onClick={()=>this.deleteData(review.id)} className="btn btn-danger">Delete</button>
                 </td>
             </tr>
@@ -55,9 +55,9 @@ class List_2 extends React.Component{
                 <thead>
                     <tr>
                         <th>Tourist</th>
-                        <th>Guide</th>
+                        <th>Place</th>
+                        <th>Details</th>
                         <th>Review</th>
-                        <th>Rating</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -70,4 +70,4 @@ class List_2 extends React.Component{
     
 }
 
-export default List_2;
+export default ReviewsOnPlaces;
