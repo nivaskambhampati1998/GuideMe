@@ -24,23 +24,12 @@ import DisplayMessage from './components/DisplayMessage';
 import PostMonument from './components/PostMonument';
 import './App.css';
 
-<<<<<<< HEAD
-import List from './components/List';
-import Add from './components/Add';
-import Update from './components/Update';
-import List_2 from './components/List_2';
-import Add_2 from './components/Add_2';
-import Update_2 from './components/Update_2';
-import Contact_list from './components/Contact_list';
-import Contact_reply from './components/Contact_reply';
-=======
 import ReviewsOnPlaces from './components/ReviewsOnPlaces';
 import AddReviewOnPlaces from './components/AddReviewsOnPlaces';
 import UpdateReviewOnPlaces from './components/UpdateReviewOnPlaces';
 import ReviewsOnGuides from './components/ReviewsOnGuides';
 import AddReviewsOnGuides from './components/AddReviewsOnGuides';
 import UpdateReviewsOnGuides from './components/UpdateReviewsOnGuides';
->>>>>>> 0642ff4522e2e10ecc1a076da360ff447b480e3d
 
 
 
@@ -103,24 +92,12 @@ class App extends Component {
 						<Route path='/login' component={Login} />
 						<Route path='/checkout' component={CheckOut} />
 						<div className="container">
-<<<<<<< HEAD
-							<Route path="/reviewOnPlaces" component={List} exact />
-							<Route path="/reviewOnPlaces/add" component={Add} />
-							<Route path="/reviewOnPlaces/update/:id" component={Update} />
-							<Route path="/reviewOnGuides" component={List_2} exact />
-							<Route path="/reviewOnGuides/add" component={Add_2} />
-							<Route path="/reviewOnGuides/update/:id" component={Update_2} />
-							<Route path="/contactlist" component={Contact_list} exact />
-							<Route path="/contact/reply/:id" component={Contact_reply} exact />
-
-=======
 							<Route path="/reviewOnPlaces" component={ReviewsOnPlaces} exact />
 							<Route path="/reviewOnPlaces/add" component={AddReviewOnPlaces} />
 							<Route path="/reviewOnPlaces/update/:id" component={UpdateReviewOnPlaces} />
 							<Route path="/reviewOnGuides" component={ReviewsOnGuides} exact />
 							<Route path="/reviewOnGuides/add" component={AddReviewsOnGuides} />
 							<Route path="/reviewOnGuides/update/:id" component={UpdateReviewsOnGuides} />
->>>>>>> 0642ff4522e2e10ecc1a076da360ff447b480e3d
 						</div>
 					</Switch>
 				</Router>
