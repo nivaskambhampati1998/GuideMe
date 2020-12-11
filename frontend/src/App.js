@@ -30,6 +30,8 @@ import Update from './components/Update';
 import List_2 from './components/List_2';
 import Add_2 from './components/Add_2';
 import Update_2 from './components/Update_2';
+import Contact_list from './components/Contact_list';
+import Contact_reply from './components/Contact_reply';
 
 
 
@@ -98,6 +100,9 @@ class App extends Component {
 							<Route path="/reviewOnGuides" component={List_2} exact />
 							<Route path="/reviewOnGuides/add" component={Add_2} />
 							<Route path="/reviewOnGuides/update/:id" component={Update_2} />
+							<Route path="/contactlist" component={Contact_list} exact />
+							<Route path="/contact/reply/:id" component={Contact_reply} exact />
+
 						</div>
 					</Switch>
 				</Router>

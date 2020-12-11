@@ -42,7 +42,7 @@ class Add extends React.Component{
     
     render(){
         return (
-            <table className="table table-bordered">
+            <table className="table table-bordered" style={{marginTop:'100px'}}>
                 <tbody>
                     <tr>
                         <th>Tourist</th>

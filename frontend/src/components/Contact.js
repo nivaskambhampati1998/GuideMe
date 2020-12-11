@@ -2,41 +2,102 @@ import React, { Component } from 'react';
 import * as emailjs from 'emailjs-com';
 import { Button, FromFeedback, Form, FormGroup, Label, Input } from 'reactstrap';
 
-class Contact extends Component {
-  state = {
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
+class Contact extends React.Component{
+  constructor(){
+      super();
+      this.state={
+          name:'',
+          email:'',
+          subject:'',
+          message:''
+      }
+      this.changeHandler=this.changeHandler.bind(this);
+      this.submitForm=this.submitForm.bind(this);
   }
-  handleSubmit(e) {
-    e.preventDefault()
-    const { name, email, subject, message } = this.state
-    let templateParams = {
-      from_name: email,
-      to_name: 'YOUR_EMAIL_ID',
-      subject: subject,
-      message_html: message,
-    }
-    emailjs.send(
-      'gmail',
-      'template_XXXXXXXX',
-      'templateparams',
-      'user_XXXXXXXXXXXXXXXXXX'
-    )
-    this.resetForm()
+
+  // Input Change Handler
+  changeHandler(event){
+      this.setState({
+          [event.target.name]:event.target.value
+      });
   }
-  resetForm() {
-    this.setState({
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-    })
+
+  // Submit Form
+  submitForm(){
+      fetch('http://127.0.0.1:8000/contact/',{
+          method:'POST',
+          body:JSON.stringify(this.state),
+          headers:{
+              'Content-type': 'application/json; charset=UTF-8',
+          },
+      })
+      .then(response=>response.json())
+      .then((data)=>console.log(data));
+
+      this.setState({
+          name:'',
+          email:'',
+          subject:'',
+          message:''
+     
+      });
   }
-  handleChange = (param, e) => {
-    this.setState({ [param]: e.target.value })
-  }
+
+// class Contact extends Component {
+//   state = {
+//     name: '',
+//     email: '',
+//     subject: '',
+//     message: '',
+//   }
+//   handleSubmit(e) {
+//     e.preventDefault()
+//     const { name, email, subject, message } = this.state
+//     let templateParams = {
+//       from_name: email,
+//       to_name: 'YOUR_EMAIL_ID',
+//       subject: subject,
+//       message_html: message,
+//     }
+//     emailjs.send(
+//       'gmail',
+//       'template_XXXXXXXX',
+//       'templateparams',
+//       'user_XXXXXXXXXXXXXXXXXX'
+//     )
+//     this.resetForm()
+//   }
+//   resetForm() {
+//     this.setState({
+//       name: '',
+//       email: '',
+//       subject: '',
+//       message: '',
+//     })
+//   }
+//   handleChange = (param, e) => {
+//     this.setState({ [param]: e.target.value })
+//   }
+//   submitForm(){
+//     fetch('http://127.0.0.1:8000/contact/',{
+//         method:'POST',
+//         body:JSON.stringify(this.state),
+//         headers:{
+//             'Content-type': 'application/json; charset=UTF-8',
+//         },
+//     })
+//     .then(response=>response.json())
+//     .then((data)=>console.log(data));
+
+//     this.setState({
+//         name: '',
+//         email: '',
+//         subject: '',
+//         message: '',
+   
+//     });
+//   }
+
   render() {
     return (
       <div>
@@ -97,7 +158,7 @@ class Contact extends Component {
               </div>
               <div className="col-md-8">
                 <div className="contact-form">
-                  <form id="contact" action method="post" onSubmit={this.handleSubmit.bind(this)}>
+                  <form id="contact" action method="post" onSubmit={this.submitForm}>
                     <div className="row">
                       <FormGroup className="col-lg-12 col-md-12 col-sm-12" controlId="formBasicName">
                         <Label className="text-muted">Name</Label>
@@ -106,7 +167,7 @@ class Contact extends Component {
                           name="name"
                           value={this.state.name}
                           className="text-primary"
-                          onChange={this.handleChange.bind(this, 'name')}
+                          onChange={this.changeHandler}
                           placeholder="Name"
                         />
                       </FormGroup>
@@ -117,7 +178,7 @@ class Contact extends Component {
                           name="email"
                           value={this.state.email}
                           className="text-primary"
-                          onChange={this.handleChange.bind(this, 'email')}
+                          onChange={this.changeHandler}
                           placeholder="Enter email"
                         />
                       </FormGroup>
@@ -128,7 +189,7 @@ class Contact extends Component {
                           name="subject"
                           className="text-primary"
                           value={this.state.subject}
-                          onChange={this.handleChange.bind(this, 'subject')}
+                          onChange={this.changeHandler}
                           placeholder="Subject"
                         />
                       </FormGroup>
@@ -139,12 +200,12 @@ class Contact extends Component {
                           name="message"
                           className="text-primary"
                           value={this.state.message}
-                          onChange={this.handleChange.bind(this, 'message')}
+                          onChange={this.changeHandler}
                         />
                       </FormGroup>
                       <div className="col-lg-12">
                         <fieldset>
-                          <Button type="submit" className="filled-button">Send Message</Button>
+                          <Button type="submit"  className="filled-button">Send Message</Button>
                         </fieldset>
                       </div>
                     </div>

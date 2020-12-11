@@ -51,7 +51,7 @@ class List extends React.Component{
             </tr>
         );
         return (
-            <table className="table table-bordered">
+            <table className="table table-bordered" style={{marginTop:'100px'}}>
                 <thead>
                     <tr>
                         <th>Tourist</th>
