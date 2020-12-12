@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class Contact_list extends React.Component{
+class ContactList extends React.Component{
     constructor(){
         super();
         this.state={
@@ -38,14 +38,14 @@ class Contact_list extends React.Component{
 
     render(){
         const reviewData=this.state.data;
-        const rows=reviewData.map((review)=>
+        const rows=reviewData.reverse().map((review)=>
             <tr key={review.id}>
                 <td>{review.name}</td>
                 <td>{review.email}</td>
                 <td>{review.subject}</td>
                 <td>{review.message}</td>
                 <td>
-                    <Link to={'contact/reply/'+review.id} className="btn btn-info mr-2">Reply</Link>
+                    <a href={"mailto:"+ review.email+"?subject=Re: "+review.subject} className="btn btn-info mr-2">Reply</a>
                     <button onClick={()=>this.deleteData(review.id)} className="btn btn-danger">Delete</button>
                 </td>
             </tr>
@@ -71,4 +71,4 @@ class Contact_list extends React.Component{
     
 }
 
-export default Contact_list;
+export default ContactList;

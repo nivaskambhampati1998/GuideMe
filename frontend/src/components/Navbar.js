@@ -18,7 +18,7 @@ export class Navbar extends Component {
     if(localStorage.getItem('token')!=null)
     {
         profile = (
-          <li className="nav-item"><NavLink className="nav-link" to={this.props.username}>Profile</NavLink></li>
+          <li className="nav-item"><NavLink className="nav-link" to={this.props.username}>Hi! {localStorage.getItem('username')}</NavLink></li>
         )
         but_logout=(
           <li className="nav-item"><NavLink className="nav-link" to={"/"} onClick={this.handleLogout}>Logout</NavLink></li>

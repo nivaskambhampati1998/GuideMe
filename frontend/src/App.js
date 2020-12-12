@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import CheckOut from './components/CheckOut';
 
 import Contact from './components/Contact';
+import ContactList from './components/ContactList';
 import Blog from './components/Blog';
 import Place from './components/Place';
 import ProfilePage from './components/ProfilePage';
@@ -91,6 +92,7 @@ class App extends Component {
 						<Route path='/testimonial' component={Testimonial} />
 						<Route path='/message' component={DisplayMessage} />
 						<Route path='/contact' component={Contact} />
+						<Route path='/contactlist' component={ContactList} />
 						<Route path='/login' component={Login} />
 						<Route path='/checkout' component={CheckOut} />
 						<div className="container">
