@@ -402,6 +402,9 @@ class ProfilePage extends Component {
 											<p>Expert</p>
 										</div>
 									</div>
+
+									<hr />
+									<h2>Bookings</h2>
 									{book}
 								</div>
 							</div>

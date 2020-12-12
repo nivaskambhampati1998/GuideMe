@@ -74,7 +74,7 @@ export class Place extends Component {
             <div className="row">
               <div className="col-md-12">
                 <div className="text-content">
-                  <h4>Lorem epsum nnnn</h4>
+                  <h4>The journey is the destination.</h4>
                   <h2>Place</h2>
                   {addplace}
                 </div>

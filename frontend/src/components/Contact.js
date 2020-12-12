@@ -106,7 +106,7 @@ class Contact extends React.Component{
             <div className="row">
               <div className="col-md-12">
                 <div className="text-content">
-                  <h4>Lorem ipsum dolor</h4>
+                  <h4></h4>
                   <h2>Contact Us</h2>
                 </div>
               </div>
@@ -214,7 +214,7 @@ class Contact extends React.Component{
               </div>
               <div className="col-md-4">
                 <img src="assets/images/team_01.jpg" className="img-fluid" alt="" />
-                <h5 className="text-center" style={{ marginTop: '15px' }}>John Doe</h5>
+                <h5 className="text-center" style={{ marginTop: '15px' }}>Venkatesh</h5>
               </div>
             </div>
           </div>

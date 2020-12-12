@@ -98,8 +98,7 @@ class Blogdetails extends Component {
                             </div>
                             <div className="col-md-4">
                                 <div className="left-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur. Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate
-              corrupti.</p>
+                                    <p></p>
                                     <br />
                                     <ul className="social-icons">
                                         <li><a href="#"><i className="fa fa-facebook" /></a></li>

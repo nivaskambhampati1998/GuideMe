@@ -22,21 +22,21 @@ export class Home extends Component {
               <img src="assets/images/slider-image-1-1920x600.jpg" style={{width:'100%'}} width={1100} height={500}/>
               <div className="carousel-caption">
                 <h1 style={{color:'black'}}>Book your trip today!</h1>
-                <h2>Lorem ipsum dolor sit amet</h2>
+                <h2></h2>
               </div>   
             </div>
             <div className="carousel-item">
               <img src="assets/images/slider-image-2-1920x600.jpg" style={{width:'100%'}} width={1100} height={500}/>
               <div className="carousel-caption">
                 <h1 style={{color:'black'}}>Book your trip today!</h1>
-                <h2>Lorem ipsum dolor sit amet</h2>
+                <h2></h2>
               </div>   
             </div>
             <div className="carousel-item">
               <img src="assets/images/slider-image-3-1920x600.jpg" style={{width:'100%'}} width={1100} height={500}/>
               <div className="carousel-caption">
                 <h1 style={{color:'black'}}>Book your trip today!</h1>
-                <h2>Lorem ipsum dolor sit amet</h2>
+                <h2></h2>
               </div>   
             </div>
           </div>
@@ -60,9 +60,9 @@ export class Home extends Component {
                 <div className="service-item">
                   <img src="https://specials-images.forbesimg.com/imageserve/5d3871cff1176b0008977f70/960x0.jpg?fit=scale" style={{ width:'260px',height:'150px'}} alt="" />
                   <div className="down-content">
-                    <h4>John Doe</h4>
+                    <h4>Venkatesh</h4>
                     <p className="n-m"><em>"Tour guides lead visitors through tourist attractions and give information about the attractions' natural and cultural significance."</em></p>
-                    <button style={{ backgroundColor: 'red', textAlign: 'center', width: '100px', borderRadius: '10px', borderStyle: 'initial', color: 'white' }}> Book </button>
+                    <a href="/profile/venkatesh123t"><button style={{ backgroundColor: 'red', textAlign: 'center', width: '100px', borderRadius: '10px', borderStyle: 'initial', color: 'white' }}> Book </button></a>
                   </div>
                 </div>
               </div>
@@ -70,9 +70,9 @@ export class Home extends Component {
                 <div className="service-item">
                   <img src="https://i.guim.co.uk/img/media/c1a40be9bb16ddac7902147d384d6e3236964721/0_0_3500_2100/master/3500.jpg?width=620&quality=85&auto=format&fit=max&s=5c7b31e1069d0fcdfcf8d2cd640d91cb" style={{ width:'260px',height:'150px'}} alt="" />
                   <div className="down-content">
-                    <h4>Jane Smith</h4>
+                    <h4>Ranga</h4>
                     <p className="n-m"><em>"Tour guides lead visitors through tourist attractions and give information about the attractions' natural and cultural significance."</em></p>
-                    <button style={{ backgroundColor: 'red', textAlign: 'center', width: '100px', borderRadius: '10px', borderStyle: 'initial', color: 'white' }}> Book </button>
+                    <a href="/profile/venkatesh123t"><button style={{ backgroundColor: 'red', textAlign: 'center', width: '100px', borderRadius: '10px', borderStyle: 'initial', color: 'white' }}> Book </button></a>
                   </div>
                 </div>
               </div>
@@ -80,9 +80,9 @@ export class Home extends Component {
                 <div className="service-item">
                   <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" style={{ width:'260px',height:'150px'}} alt="" />
                   <div className="down-content">
-                    <h4>Antony Davis</h4>
+                    <h4>Vikky</h4>
                     <p className="n-m"><em>"Tour guides lead visitors through tourist attractions and give information about the attractions' natural and cultural significance."</em></p>
-                    <button style={{ backgroundColor: 'red', textAlign: 'center', width: '100px', borderRadius: '10px', borderStyle: 'initial', color: 'white' }}> Book </button>
+                    <a href="/profile/venkatesh123t"><button style={{ backgroundColor: 'red', textAlign: 'center', width: '100px', borderRadius: '10px', borderStyle: 'initial', color: 'white' }}> Book </button></a>
                   </div>
                 </div>
               </div>
@@ -100,36 +100,36 @@ export class Home extends Component {
                 </div>
                 <div className="col-md-4">
                   <div className="product-item">
-                    <a><img src="assets/images/product-1-370x270.jpg" alt="" /></a>
+                    <a><img src="media/monuments/Golconda.jpg" alt="" /></a>
                     <div className="down-content" style={{ backgroundColor: '#fff' }}>
-                      <h4>The Blue Lagoon, Iceland</h4>
-                      <p>Iceland is no doubt one of the hottest new travel destinations.</p>
+                      <h4>Golconda, Hyderabad</h4>
+                      <p>Golconda Fort is located in the western part of Hyderabad city and is about 9 km from the Hussain Sagar Lake. </p>
                       <div className="center" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <button style={{ backgroundColor: 'red', textAlign: 'center', width: '100px', borderRadius: '10px', borderStyle: 'initial', color: 'white' }}> Visit </button>
+                      <a href="/placedetails/13"><button style={{ backgroundColor: 'red', textAlign: 'center', width: '100px', borderRadius: '10px', borderStyle: 'initial', color: 'white' }}> Book </button></a>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="col-md-4">
                   <div className="product-item">
-                    <a><img src="assets/images/product-2-370x270.jpg" alt="" /></a>
+                    <a><img src="media/monuments/Balaji_Temple.jpg" alt="" /></a>
                     <div className="down-content" style={{ backgroundColor: '#fff' }}>
-                      <h4>Machu Picchu, Peru</h4>
-                      <p>Tourists are quickly taking note of South America as they look for lesser-known.</p>
+                      <h4>Balaji Temple, Tirupati</h4>
+                      <p>The Tirupati Balaji is one of the most pivotal landmarks of the Hindu mythology, holding a magnificent position in the Chittoor district of Andhra Pradesh.</p>
                       <div className="center" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <button style={{ backgroundColor: 'red', textAlign: 'center', width: '100px', borderRadius: '10px', borderStyle: 'initial', color: 'white' }}> Visit </button>
+                      <a href="/placedetails/14"><button style={{ backgroundColor: 'red', textAlign: 'center', width: '100px', borderRadius: '10px', borderStyle: 'initial', color: 'white' }}> Book </button></a>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="col-md-4">
                   <div className="product-item">
-                    <a><img src="assets/images/product-3-370x270.jpg" alt="" /></a>
+                    <a><img src="media/monuments/Marina_place.jpg" alt="" /></a>
                     <div className="down-content" style={{ backgroundColor: '#fff' }}>
-                      <h4>Christ the Redeemer, Brazil</h4>
-                      <p>You’ve probably seen the photos reflecting the throbs of people huddled.</p>
+                      <h4>Marina beach, Chennai</h4>
+                      <p>Marina beach in Chennai along the Bay of Bengal is India's longest and world's second longest beach</p>
                       <div className="center" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <button style={{ backgroundColor: 'red', textAlign: 'center', width: '100px', borderRadius: '10px', borderStyle: 'initial', color: 'white' }}> Visit </button>
+                      <a href="/placedetails/15"><button style={{ backgroundColor: 'red', textAlign: 'center', width: '100px', borderRadius: '10px', borderStyle: 'initial', color: 'white' }}> Book </button></a>
                       </div>
                     </div>
                   </div>
@@ -150,8 +150,8 @@ export class Home extends Component {
                 <div className="service-item">
                   <a href="#" className="services-item-image"><img src="assets/images/blog-1-370x270.jpg" className="img-fluid" alt="" /></a>
                   <div className="down-content">
-                    <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</a></h4>
-                    <p style={{ margin: 0 }}> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
+                    <h4><a href="/blog">A mind that is stretched by a new experience can never go back to its old dimensions.</a></h4>
+                    <p style={{ margin: 0 }}> Venktesh &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
                   </div>
                 </div>
               </div>
@@ -159,17 +159,17 @@ export class Home extends Component {
                 <div className="service-item">
                   <a href="#" className="services-item-image"><img src="assets/images/blog-2-370x270.jpg" className="img-fluid" alt="" /></a>
                   <div className="down-content">
-                    <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h4>
-                    <p style={{ margin: 0 }}> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
+                    <h4><a href="/blog">A mind that is stretched by a new experience can never go back to its old dimensions.</a></h4>
+                    <p style={{ margin: 0 }}> Ranga &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
                   </div>
                 </div>
               </div>
               <div className="col-lg-4 col-md-6">
                 <div className="service-item">
-                  <a href="#" className="services-item-image"><img src="assets/images/blog-3-370x270.jpg" className="img-fluid" alt="" /></a>
+                  <a href="/blog" className="services-item-image"><img src="assets/images/blog-3-370x270.jpg" className="img-fluid" alt="" /></a>
                   <div className="down-content">
-                    <h4><a href="#">Aperiam modi voluptatum fuga officiis cumque</a></h4>
-                    <p style={{ margin: 0 }}> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
+                    <h4><a href="">A mind that is stretched by a new experience can never go back to its old dimensions.</a></h4>
+                    <p style={{ margin: 0 }}> Vikky &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
                   </div>
                 </div>
               </div>
@@ -183,11 +183,11 @@ export class Home extends Component {
                 <div className="inner-content">
                   <div className="row">
                     <div className="col-md-8">
-                      <h4>Lorem ipsum dolor sit amet, consectetur adipisicing.</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque corporis amet elite author nulla.</p>
+                      <h4>Feel free to contact us anytime.</h4>
+                      <p>We try our best to reply you within 24 hours.</p>
                     </div>
                     <div className="col-lg-4 col-md-6 text-right">
-                      <a href="contact.html" className="filled-button">Contact Us</a>
+                      <a href="/contact" className="filled-button">Contact Us</a>
                     </div>
                   </div>
                 </div>
