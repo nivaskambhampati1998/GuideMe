@@ -56,6 +56,12 @@ export class Place extends Component {
         </div>
       )
     })
+    let addplace;
+    if(localStorage.getItem('username') != null){
+      addplace = (
+        <Link to={'/addPlace'}><button style={{border:'2px blue',borderRadius:'10px',padding:'10px',paddingLeft:'20px',paddingRight:'20px',color:'white',fontWeight:'bold',backgroundColor:'blue'}}>Add a Place</button></Link>
+      )
+    }
     return (
       <div>
         {/* ***** Preloader Start ***** */}
@@ -68,9 +74,9 @@ export class Place extends Component {
             <div className="row">
               <div className="col-md-12">
                 <div className="text-content">
-                  <h4>Lorem epsum nnnn</h4>
+                  <h4>The journey is the destination.</h4>
                   <h2>Place</h2>
-                  <Link to={'/addPlace'}><a className='btn btn-primary' href="">Add Place</a></Link>
+                  {addplace}
                 </div>
               </div>
             </div>
@@ -96,17 +102,6 @@ export class Place extends Component {
             </div>
           </div>
         </div>
-        <footer>
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12">
-                <div className="inner-content">
-                  <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>
         {/* Modal */}
       </div>
 

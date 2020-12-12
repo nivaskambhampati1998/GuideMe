@@ -51,6 +51,7 @@ export class Login extends Component {
     if (this.state.loggedIn) {
       return <Redirect to={'/'} />;
     }
+    console.log(this.props)
 
     let error = '';
     if (this.state.message) {
