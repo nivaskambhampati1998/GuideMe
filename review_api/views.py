@@ -21,12 +21,19 @@ class ReviewList(views.APIView):
 
     def post(self, request, *args, **kwargs):
         data=request.data
-        print(data)
+        guideobj = Guide.objects.get(guidename=data['guide'])
         guide = Guide.objects.get(guidename=data['guide']).pk
         data['guide'] = guide
         author = Tourist.objects.get(touristname = data['author']).pk
         data['author'] = author
-        print(data)
+
+        b = Review.objects.all()
+        a = 0
+        for i in b:
+            a += i.rating
+        guideobj.rating = a/len(b)
+        guideobj.save()
+
         serializer = ReviewSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
