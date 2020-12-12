@@ -5,7 +5,7 @@ from rest_framework import generics, views, status
 from rest_framework.response import Response
 from blog.models import Review
 from .serializers import ReviewSerializer, ReviewGuideSerializer
-from accounts.models import Guide, User
+from accounts.models import Guide, User, Tourist
 
 # class ReviewList(generics.ListAPIView):
 #     queryset = Review.objects.all()
@@ -21,11 +21,12 @@ class ReviewList(views.APIView):
 
     def post(self, request, *args, **kwargs):
         data=request.data
+        print(data)
         guide = Guide.objects.get(guidename=data['guide']).pk
         data['guide'] = guide
-        author = User.objects.get(username = data['author']).pk
+        author = Tourist.objects.get(touristname = data['author']).pk
         data['author'] = author
-
+        print(data)
         serializer = ReviewSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
