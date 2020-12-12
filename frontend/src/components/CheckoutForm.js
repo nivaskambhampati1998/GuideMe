@@ -126,6 +126,7 @@ const CheckoutForm = (props) => {
                     setError(error.response.data)
                 }
                 else {
+                    console.log(props);
                     ApiService.saveStripeInfo({
                         email,
                         guidename:props.state.details.guidename,

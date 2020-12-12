@@ -112,77 +112,8 @@ class Blogdetails extends Component {
                         </div>
                     </div>
                 </div>
-                <footer>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-12">
-                                <div className="inner-content">
-                                    <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
                 {/* Modal */}
-                <div className="modal fade" id="exampleModal" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div className="modal-dialog modal-lg" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Book Now</h5>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                            <div className="modal-body">
-                                <div className="contact-form">
-                                    <form action="#" id="contact">
-                                        <div className="row">
-                                            <div className="col-md-6">
-                                                <fieldset>
-                                                    <input type="text" className="form-control" placeholder="Pick-up location" required />
-                                                </fieldset>
-                                            </div>
-                                            <div className="col-md-6">
-                                                <fieldset>
-                                                    <input type="text" className="form-control" placeholder="Return location" required />
-                                                </fieldset>
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div className="col-md-6">
-                                                <fieldset>
-                                                    <input type="text" className="form-control" placeholder="Pick-up date/time" required />
-                                                </fieldset>
-                                            </div>
-                                            <div className="col-md-6">
-                                                <fieldset>
-                                                    <input type="text" className="form-control" placeholder="Return date/time" required />
-                                                </fieldset>
-                                            </div>
-                                        </div>
-                                        <input type="text" className="form-control" placeholder="Enter full name" required />
-                                        <div className="row">
-                                            <div className="col-md-6">
-                                                <fieldset>
-                                                    <input type="text" className="form-control" placeholder="Enter email address" required />
-                                                </fieldset>
-                                            </div>
-                                            <div className="col-md-6">
-                                                <fieldset>
-                                                    <input type="text" className="form-control" placeholder="Enter phone" required />
-                                                </fieldset>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <button type="button" className="btn btn-primary">Book Now</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
 
         )

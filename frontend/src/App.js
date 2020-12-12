@@ -9,11 +9,11 @@ import RegisterTourist from './components/RegisterTourist';
 import ResetPassword from './components/ResetPassword';
 import ResetPasswordConfirm from './components/ResetPasswordConfirm';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import CheckOut from './components/CheckOut';
 
 import Contact from './components/Contact';
 import Blog from './components/Blog';
-import Blogwriting from './components/BlogWriting';
 import Place from './components/Place';
 import ProfilePage from './components/ProfilePage';
 import Testimonial from './components/Testimonial';
@@ -102,6 +102,7 @@ class App extends Component {
 							<Route path="/reviewOnGuides/update/:id" component={UpdateReviewsOnGuides} />
 						</div>
 					</Switch>
+					<Footer />
 				</Router>
 			</div>
 		);

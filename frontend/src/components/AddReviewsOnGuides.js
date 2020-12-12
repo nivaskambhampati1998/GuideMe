@@ -47,13 +47,13 @@ class AddReviewsOnGuides extends React.Component{
                     <tr>
                         <th>Tourist</th>
                         <td>
-                            <input value={this.state.author} name="author" onChange={this.changeHandler} type="number" className="form-control" />
+                            <input value={this.state.author} name="author" onChange={this.changeHandler} type="text" className="form-control" />
                         </td>
                     </tr>
                     <tr>
                         <th>Guide</th>
                         <td>
-                            <input value={this.state.guide} name="guide" onChange={this.changeHandler} type="number" className="form-control" />
+                            <input value={this.state.guide} name="guide" onChange={this.changeHandler} type="text" className="form-control" />
                         </td>
                     </tr>
                     <tr>

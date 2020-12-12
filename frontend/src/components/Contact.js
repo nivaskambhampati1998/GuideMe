@@ -158,7 +158,7 @@ class Contact extends React.Component{
               </div>
               <div className="col-md-8">
                 <div className="contact-form">
-                  <form id="contact" action method="post" onSubmit={this.submitForm}>
+                  <form id="contact" onSubmit={this.submitForm}>
                     <div className="row">
                       <FormGroup className="col-lg-12 col-md-12 col-sm-12" controlId="formBasicName">
                         <Label className="text-muted">Name</Label>
@@ -219,18 +219,6 @@ class Contact extends React.Component{
             </div>
           </div>
         </div>
-
-        <footer>
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12">
-                <div className="inner-content">
-                  <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>
       </div>
 
     )
