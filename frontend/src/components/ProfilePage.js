@@ -16,11 +16,13 @@ class ProfilePage extends Component{
 				languages:null,
 				is_guide:null,
 				is_tourist:null,
+				is_staff:null,
 				avatar:null,
 			},
 			rating:null,
 			places_known:null,
 			reviews:[],
+			queries:[],
 		}
 		this.changeHandler=this.changeHandler.bind(this);
 		this.submitForm=this.submitForm.bind(this);
@@ -94,6 +96,7 @@ class ProfilePage extends Component{
 			axios.get('http://localhost:8000/accounts/user/' + username + '/', config).then(
 				res => {
 					this.setUser(res.data);
+					console.log(res.data);
 					if(res.data.user.is_guide === true){
 						axios.get('http://127.0.0.1:8000/reviewOnGuides/'+username+'/',config).then(
 							res=>{
@@ -110,6 +113,21 @@ class ProfilePage extends Component{
 				}
 			)	
 		}
+	}
+	getqueries= e=>{
+		// console.log(this.state.queries.length)
+		if(this.state.queries.length===0){
+		axios.get('http://localhost:8000/contact/').then(
+				res => {
+					this.setState({queries:res.data})
+					console.log("...",res.data,"...")
+				},
+				err => {
+					console.log(err)
+				}
+		)}
+		
+
 	}
 	handleChangePassword = e => {
         e.preventDefault();
@@ -203,13 +221,71 @@ class ProfilePage extends Component{
 				</div>
 			)
 		})
-		if(this.state.user.username === null){
+		const queries = this.state.queries.map(d=>{
+            return (
+				<div className="col-lg-4 col-md-4 col-sm-4">
+				<div className="box" style={{ margin: '10px',width:'100%' }}>
+					<div className="service-item" style={{padding:"10px"}}>
+					<NavLink to={{pathname:'/contactlist/'}} className="services-item-image">
+						<div className="down-content">
+						<h6>{d.subject}</h6>
+						<p style={{ margin: 0,color:'solid black' }}> {d.message}</p>
+						<p style={{textAlign:'right',marginBottom:'10px',paddingBottom:'0px',fontSize:'10px'}}> -from {d.name}</p>
+						</div>
+					</NavLink>
+					</div>
+				</div>
+				</div>
+				
+			)
+		})
+		if(localStorage.getItem('token') === null){
 			return (
                 <div>
                     <div className="container jumbotron" style={{marginTop:'100px',marginBottom:'4%',textAlign:'center',backgroundColor: 'lightcoral'}}>
                         <h4>Please login to continue.</h4>
                         <br />
                         <p>Having trouble? <Link to={'/contact'}><a href="">Contact us</a></Link></p>
+                    </div>
+                </div>
+            )
+		}
+		const reviewData=this.state.queries;
+        const rows=reviewData.reverse().map((review)=>
+            <tr key={review.id}>
+                <td>{review.name}</td>
+                <td>{review.email}</td>
+                <td>{review.subject}</td>
+                <td>{review.message}</td>
+                <td>
+                    <a href={"mailto:"+ review.email+"?subject=Re: "+review.subject} className="btn btn-info mr-2">Reply</a>
+                    <button onClick={()=>this.deleteData(review.id)} className="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        );
+		if(this.state.user.is_staff===null){
+			this.getqueries()
+			return (
+                <div>
+                    <div className="container" style={{marginTop:'100px'}}>
+                        <h3>Welcome Admin</h3>
+                        <br />
+                        <h5>Here are some of the queries for you :)</h5>
+						<table className="table table-bordered" style={{marginTop:'100px'}}>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Subject</th>
+                        <th>Message</th>
+                        <th>Action</th>
+                    
+                    </tr>
+                </thead>
+                <tbody>
+                    {rows}
+                </tbody>
+            </table>
                     </div>
                 </div>
             )
