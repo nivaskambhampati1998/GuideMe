@@ -7,7 +7,7 @@ from .serializers import BookingsSerializerGuide,BookingsSerializer
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework.views import APIView
 from accounts.models import Guide
-from rest_framework.generics import ListCreateAPIView                                                                                   
+from rest_framework.generics import ListCreateAPIView, ListAPIView                                                                               
 from .models import Bookings
 from datetime import datetime
 
@@ -87,6 +87,17 @@ class BookingsList(APIView):
         except ObjectDoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
+class DeleteBooking(APIView):
+
+    def delete(self,request,slug):
+        print(slug,'-----------------------------------------')
+        b = Bookings.objects.get(booking_id = slug)
+        delresult = b.delete()
+        data = {'message': 'error during deletion'}
+        if delresult[0] == 1:
+            data = {'message': 'successfully deleted'}
+        return Response(data)
+
     # def post(self, request, *args, **kwargs):
     #     serializer = BookingsSerializer(data=request.data)
     #     if serializer.is_valid():
@@ -99,3 +110,14 @@ class BookingsList(APIView):
 class BookingsDone(ListCreateAPIView):
     queryset=Bookings.objects.all()
     serializer_class=BookingsSerializer
+
+class CurrentUserBooking(ListAPIView):
+
+    serializer_class = BookingsSerializer
+
+    def get_queryset(self):
+        # try:
+        user = self.kwargs['slug']
+        i = Bookings.objects.filter(username = user)
+        print(i)
+        return i

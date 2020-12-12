@@ -19,8 +19,10 @@ class ProfilePage extends Component{
 				avatar:null,
 			},
 			rating:null,
+			amount:null,
 			places_known:null,
 			reviews:[],
+			bookings:[],
 		}
 		this.changeHandler=this.changeHandler.bind(this);
 		this.submitForm=this.submitForm.bind(this);
@@ -104,6 +106,15 @@ class ProfilePage extends Component{
 							}
 						)
 					}
+					axios.get('http://127.0.0.1:8000/booking/getbooking/'+username+'/',config).then(
+						res=>{
+							this.setState({bookings:res.data});
+
+						},
+						err=>{
+							console.log(err);
+						}
+					)
 				},
 				err => {
 					console.log(err)
@@ -144,9 +155,22 @@ class ProfilePage extends Component{
 				avatar:user.user.avatar,
 			},
 			rating: user.rating,
-			places_known:user.places_known
+			places_known:user.places_known,
+			amount:user.amount
         });
-    };
+	};
+
+	deleteBooking(id){
+		axios.delete("http://127.0.0.1:8000/booking/getbooking/delete/"+id+'/').then(
+			res=>{
+				console.log(res.data)
+			},
+			err=>{
+				console.log(err)
+			}
+		)
+	}
+
     render(){
 		let addreview,rating,profilepic,reviewtab,err,updateprofile,accountsettings;
         const username = this.props.match.params.username;
@@ -154,37 +178,37 @@ class ProfilePage extends Component{
 		profilepic = 'http://localhost:3000'+this.state.user.avatar;
 		if(this.state.user.is_guide===true){
 			rating = (
-				<p className="proile-rating">RATING : <span> {this.state.rating}/10</span></p>
+				<p className="proile-rating">RATING : <span> {this.state.rating}/5</span></p>
 			)
 			reviewtab = (
 				<h3>Reviews</h3>
 			)
 			if(this.state.user.username != localStorage.getItem('username'))
-			addreview = (
-				<table className="table table-bordered" style={{marginTop:'100px'}}>
-					<tbody>
-						<tr>
-							<th>Review</th>
-							<td>
-								<input value={this.state.review} name="review" onChange={this.changeHandler} type="text" className="form-control" />
-							</td>
-						</tr>
-						<tr>
-							<th>Rating</th>
-							<td>
-								<input value={this.state.rating} name="rating" min='1' max ='5' onChange={this.changeHandler} type="number" className="form-control" />
-							</td>
-						</tr>
-						<tr>
-							<td colSpan="2">
-								<input type="submit" onClick={this.submitForm} className="btn btn-dark" />
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			)
+				addreview = (
+					<table className="table table-bordered" style={{marginTop:'100px'}}>
+						<tbody>
+							<tr>
+								<th>Review</th>
+								<td>
+									<input value={this.state.review} name="review" onChange={this.changeHandler} type="text" className="form-control" />
+								</td>
+							</tr>
+							<tr>
+								<th>Rating</th>
+								<td>
+									<input value={this.state.rating} name="rating" min='1' max ='5' onChange={this.changeHandler} type="number" className="form-control" />
+								</td>
+							</tr>
+							<tr>
+								<td colSpan="2">
+									<input type="submit" onClick={this.submitForm} className="btn btn-dark" />
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				)
 		}
-		if(this.state.user.username != localStorage.getItem('username')){
+		if(this.state.user.username === localStorage.getItem('username')){
 			accountsettings = (
 				<div className="profile-work">
 					<p>Account Settings</p>
@@ -195,6 +219,15 @@ class ProfilePage extends Component{
 				</div>
 			)
 		}
+		const book = this.state.bookings.map(d=>{
+			return (
+				<div key={d.booking_id}>
+					<blockquote>Guidename: {d.guidename}<br/>Place: {d.place}<br/>Booking date: {d.booking_date}</blockquote>
+					<button onClick={this.deleteBooking(d.booking_id)} className='btn btn-danger'>Delete</button>
+					<hr />
+				</div>
+			)
+		})
 		const reviews = this.state.reviews.reverse().map(d=>{
             return (
 				<div>
@@ -265,52 +298,31 @@ class ProfilePage extends Component{
 									{reviews}
 								</div>
 								<div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-											<div className="row">
-												<div className="col-md-6">
-													<label>Experience</label>
-												</div>
-												<div className="col-md-6">
-													<p>Expert</p>
-												</div>
-											</div>
-											<div className="row">
-												<div className="col-md-6">
-													<label>Hourly Rate</label>
-												</div>
-												<div className="col-md-6">
-													<p>10$/hr</p>
-												</div>
-											</div>
-											<div className="row">
-												<div className="col-md-6">
-													<label>Total Bookings</label>
-												</div>
-												<div className="col-md-6">
-													<p>230</p>
-												</div>
-											</div>
-											<div className="row">
-												<div className="col-md-6">
-													<label>English Level</label>
-												</div>
-												<div className="col-md-6">
-													<p>Expert</p>
-												</div>
-											</div>
-											<div className="row">
-												<div className="col-md-6">
-													<label>Availability</label>
-												</div>
-												<div className="col-md-6">
-													<p>6 months</p>
-												</div>
-											</div>
 									<div className="row">
-										<div className="col-md-12">
-											<label>Your Bio</label><br/>
-											<p>Your detail description</p>
+										<div className="col-md-6">
+											<label>Experience</label>
+										</div>
+										<div className="col-md-6">
+											<p>Expert</p>
 										</div>
 									</div>
+									<div className="row">
+										<div className="col-md-6">
+											<label>Hourly Rate</label>
+										</div>
+										<div className="col-md-6">
+											<p>Rs. {this.state.amount}/day</p>
+										</div>
+									</div>
+									<div className="row">
+										<div className="col-md-6">
+											<label>English Level</label>
+										</div>
+										<div className="col-md-6">
+											<p>Expert</p>
+										</div>
+									</div>
+									{book}
 								</div>
 							</div>
 						</div>

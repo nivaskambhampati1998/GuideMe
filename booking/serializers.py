@@ -5,7 +5,7 @@ from accounts.models import Guide
 class BookingsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bookings
-        fields = ('guidename','username','booking_date','booking_status')
+        fields = ('booking_id','guidename','username','place','booking_date','booking_status')
     
 
 class BookingsSerializerGuide(serializers.ModelSerializer):
