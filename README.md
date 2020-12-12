@@ -72,4 +72,4 @@ npm start
 - [P Sri Ranga](https://github.com/Pabbisettysriranga) | S20180010125
 - [P Vikranth Reddy](https://github.com/vikranthreddyp) | S20180010126
 - [S Harshavardhan](https://github.com/harshavardan605) | S20180010150
-- [K N D Pavan Srinivas](https://github.com/nivaskambhampati1998) | (S20170010062)
+- [K N D Pavan Srinivas](https://github.com/nivaskambhampati1998) | S20170010062
