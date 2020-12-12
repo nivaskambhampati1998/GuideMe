@@ -67,7 +67,7 @@ class PlaceDetail extends Component {
         
         
         event.preventDefault();
-        this.setState({date:event.target.value})
+        // this.setState({date:event.target.value})
             
         console.log('http://localhost:8000/booking/'+ this.state.city + '/' + this.state.date)
 
