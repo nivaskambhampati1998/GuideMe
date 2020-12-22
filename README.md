@@ -16,6 +16,7 @@ GuideMe is a solution to a modern problem concerned with finding a tourist guide
 * **Weather API** : to get the weather information of a place for the next 5 days
 * **Location API** : To make sure the city names are unique we are using this api.
 * **Google calendar API** : To make an event for guides and tourist to notify them
+* **Stripe API** : For smooth flow of payments for booking a guide.
 
 ### Services Exposed
 
