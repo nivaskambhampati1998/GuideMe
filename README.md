@@ -71,5 +71,5 @@ npm start
 - [P Venkatesh](https://github.com/venky012) | S20180010135
 - [P Sri Ranga](https://github.com/Pabbisettysriranga) | S20180010125
 - [P Vikranth Reddy](https://github.com/vikranthreddyp) | S20180010126
-- [S Harshavardhan](https://github.com/harshavardan605) | S20180010150
+- [S Harshavardhan](https://github.com/harshavardan605) | S20180010151
 - [K N D Pavan Srinivas](https://github.com/nivaskambhampati1998) | S20170010062
